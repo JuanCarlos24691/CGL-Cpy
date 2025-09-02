@@ -1,0 +1,1 @@
+new checkPointTimer[MAX_PLAYERS];

@@ -1,0 +1,1 @@
+#include "resources\player_view\functions/player_view.inc"

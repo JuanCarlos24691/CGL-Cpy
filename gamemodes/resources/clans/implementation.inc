@@ -1,0 +1,28 @@
+// Functions
+#include "resources\clans\functions/create_clan_wizard_text_drawings.inc"
+#include "resources\clans\functions/restore_clan_assistant_info.inc"
+#include "resources\clans\functions/change_clan_color.inc"
+#include "resources\clans\functions/change_clan_tag.inc"
+#include "resources\clans\functions/expel_a_player_from_the_clan.inc"
+#include "resources\clans\functions/leave_the_clan.inc"
+#include "resources\clans\functions/assign_clan_sub_leader.inc"
+#include "resources\clans\functions/restore_clan_invitation_info.inc"
+#include "resources\clans\functions/cancel_clan_invitation.inc"
+#include "resources\clans\functions/join_a_player_to_a_clan.inc"
+#include "resources\clans\functions/send_clan_invitation.inc"
+#include "resources\clans\functions/search_clan_index.inc"
+#include "resources\clans\functions/create_new_clan.inc"
+#include "resources\clans\functions/get_unique_clan_identifier.inc"
+
+// Commands
+#include "resources\clans\commands/clancmds.inc"
+#include "resources\clans\commands/clancolor.inc"
+#include "resources\clans\commands/clantag.inc"
+#include "resources\clans\commands/cexpulsar.inc"
+#include "resources\clans\commands/csalir.inc"
+#include "resources\clans\commands/darsublider.inc"
+#include "resources\clans\commands/cunir.inc"
+#include "resources\clans\commands/cunirme.inc"
+#include "resources\clans\commands/crearclan.inc"
+
+#include "resources\clans/clans.inc"

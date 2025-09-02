@@ -1,0 +1,1 @@
+#include "resources\desconnectiong_notice/desconnectiong_notice.inc"

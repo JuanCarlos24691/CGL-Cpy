@@ -1,0 +1,1 @@
+#define MAX_CLANS (254)

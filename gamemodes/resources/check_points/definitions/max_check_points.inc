@@ -1,0 +1,1 @@
+#define MAX_CHECK_POINTS (1000)

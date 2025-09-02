@@ -1,0 +1,1 @@
+new clanAssistantInformation[MAX_PLAYERS][clanAssistantInformationEnum];

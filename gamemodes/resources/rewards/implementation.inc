@@ -1,0 +1,1 @@
+#include "resources\rewards\funtions/reward.inc"

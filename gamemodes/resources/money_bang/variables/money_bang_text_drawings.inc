@@ -1,0 +1,1 @@
+new PlayerText:moneyBangTextDrawings[MAX_PLAYERS][7] = { PlayerText:INVALID_TEXT_DRAW, ... };

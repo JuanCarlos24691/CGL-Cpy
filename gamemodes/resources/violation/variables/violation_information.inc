@@ -1,0 +1,1 @@
+new violationInformation[MAX_PLAYERS][violationInformationEnum];

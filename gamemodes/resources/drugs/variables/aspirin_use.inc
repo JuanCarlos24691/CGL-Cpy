@@ -1,0 +1,1 @@
+new aspirinUseInformation[MAX_PLAYERS][aspirinUseInformationEnum];

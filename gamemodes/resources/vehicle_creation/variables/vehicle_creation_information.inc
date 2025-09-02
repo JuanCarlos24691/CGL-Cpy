@@ -1,0 +1,1 @@
+new vehicleCreationInformation[MAX_VEHICLE_MODELS][vehicleCreationInformationEnum];

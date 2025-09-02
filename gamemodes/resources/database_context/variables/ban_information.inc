@@ -1,0 +1,1 @@
+new banInformation[MAX_PLAYERS][banInformationEnum];

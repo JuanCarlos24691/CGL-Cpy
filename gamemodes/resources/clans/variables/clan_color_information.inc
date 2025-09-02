@@ -1,0 +1,1 @@
+new clanColorInformation[MAX_CLANS_COLORS][clanColorInformationEnum];

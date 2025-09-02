@@ -1,0 +1,23 @@
+new const animationName[][] = {
+    "SEAT_up",         "BBALL_def_jump_shot", "hndshkaa",        "hndshkba",
+    "hndshkca",        "hndshkfa_swt",         "fucku",           "BBALL_Jump_Shot",
+    "ARRESTgun",       "cower",               "SEAT_down",       "roadcross_female",
+    "EAT_Burger",      "ROB_Loop_Threat",     "BD_GF_Wave",      "Barcustom_get",
+    "CopTraf_Stop",    "crm_drgbst_01",       "CS_Dead_Guy",     "Tai_Chi_Loop",
+    "Barserve_give",   "RAP_B_Loop",          "LaFin_Sweet",     "getup_front",
+    "shop_pay",        "M_smk_in",            "DEALER_DEAL",     "gym_shadowbox",
+    "M_smk_drag",      "crckdeth2",           "FIGHTIDLE",       "Coplook_think",
+    "M_smk_out",       "M_smklean_loop",      "BBALL_pickup",    "ParkSit_W_idleA",
+    "FightC_2",        "handscower",          "KO_shot_stom",    "Shove_Partial",
+    "gym_bp_celebrate","WALK_gang1",          "WALK_old",        "WOMAN_walkpro",
+    "EAT_Vomit_SK",    "hndshkea",            "shout_02",        "gsign1LH",
+    "gsign2LH",        "WOMAN_runfatold",     "FightC_3",        "LOU_In",
+    "IDLE_chat",       "wave_loop",           "point_loop",      "EAT_Vomit_P",
+    "mrnM_loop",       "Bitchslap",           "Playa_Kiss_01",   "Invite_Yes",
+    "Invite_No",       "Scratchballs_01",     "Laugh_01",        "FightC_M",
+    "FF_Sit_Eat2",     "FF_Sit_Eat3",         "OFF_Sit_2Idle_180","OFF_Sit_Crash",
+    "OFF_Sit_Drink",   "OFF_Sit_In",          "crckidle2",       "OFF_Sit_Watch",
+    "EAT_Pizza",       "manwind",             "ParkSit_M_in",    "Lay_Bac_in",
+    "SitnWait_in_W",   "Stepsit_in",          "BIKE_fall_off",       "DAM_Dive_Loop",
+    "crckidle4"
+};

@@ -1,0 +1,1 @@
+new inventoryInformation[MAX_PLAYERS][inventoryInformationEnum];

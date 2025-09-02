@@ -1,0 +1,1 @@
+#include "resources\server_information/server_information.inc"

@@ -1,0 +1,1 @@
+new Text:dateTextDrawing = Text:INVALID_TEXT_DRAW;

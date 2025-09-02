@@ -1,0 +1,1 @@
+new loginAttempts[MAX_PLAYERS];

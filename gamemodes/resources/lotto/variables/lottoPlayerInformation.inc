@@ -1,0 +1,1 @@
+new lottoPlayerInformation[MAX_LOTTO][lottoPlayerInformationEnum];

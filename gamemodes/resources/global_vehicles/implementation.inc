@@ -1,0 +1,1 @@
+#include "resources\global_vehicles/global_vehicles.inc"

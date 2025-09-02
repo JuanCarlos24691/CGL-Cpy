@@ -1,0 +1,1 @@
+new animationAssistantInformation[MAX_PLAYERS][animationAssistantInfoEnum];

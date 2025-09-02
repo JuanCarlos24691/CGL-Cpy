@@ -1,0 +1,1 @@
+new hospitalInformation[MAX_PLAYERS][hospitalInformationEnum];

@@ -1,0 +1,1 @@
+#define MAX_MONEY_BANG (58) 

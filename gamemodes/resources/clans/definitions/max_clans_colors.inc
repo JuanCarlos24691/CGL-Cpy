@@ -1,0 +1,1 @@
+#define MAX_CLANS_COLORS (16)

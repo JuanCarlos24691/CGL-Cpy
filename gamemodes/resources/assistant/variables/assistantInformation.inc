@@ -1,0 +1,1 @@
+new assistantInformation[MAX_PLAYERS][assistantInformationEnum];

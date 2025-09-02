@@ -1,0 +1,1 @@
+new Text:dayTextDrawing = Text:INVALID_TEXT_DRAW;

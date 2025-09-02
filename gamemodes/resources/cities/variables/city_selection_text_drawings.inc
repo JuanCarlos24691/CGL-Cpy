@@ -1,0 +1,1 @@
+new PlayerText:citySelectionTextDrawings[MAX_PLAYERS][17] = { { PlayerText:INVALID_TEXT_DRAW, ...}, ...};

@@ -1,0 +1,2 @@
+new numberOfCheckPointsCreated;
+new checkPointsInformation[MAX_CHECK_POINTS][checkPointsInformationEnum];

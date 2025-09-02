@@ -1,0 +1,1 @@
+new setPlayerSpawnInformation[MAX_PLAYERS][setPlayerSpawnInformationEnum];

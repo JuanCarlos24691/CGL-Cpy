@@ -1,0 +1,1 @@
+new damageReportInformation[MAX_PLAYERS][damageReportInformationEnum];

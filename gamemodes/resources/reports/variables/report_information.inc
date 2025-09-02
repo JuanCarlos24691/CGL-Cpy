@@ -1,0 +1,1 @@
+new reportInformation[MAX_REPORTS][reportInformationEnum];

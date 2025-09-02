@@ -1,0 +1,1 @@
+new speedometerInformation[MAX_PLAYERS][speedometerInformationEnum];

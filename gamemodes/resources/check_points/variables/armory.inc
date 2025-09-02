@@ -1,0 +1,1 @@
+new armoryInformation[MAX_PLAYERS][armoryInformationEnum];

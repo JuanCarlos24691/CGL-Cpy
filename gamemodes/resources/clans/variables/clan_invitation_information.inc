@@ -1,0 +1,1 @@
+new clanInvitationInformation[MAX_PLAYERS][clanInvitationInfoEnum];

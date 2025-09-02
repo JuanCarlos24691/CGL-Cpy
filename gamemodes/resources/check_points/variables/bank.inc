@@ -1,0 +1,1 @@
+new bankInformation[MAX_PLAYERS][bankInformationEnum];

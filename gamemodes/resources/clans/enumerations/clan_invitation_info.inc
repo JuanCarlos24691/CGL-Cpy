@@ -1,0 +1,4 @@
+enum clanInvitationInfoEnum {
+    clanIdentifier,
+    invitationExpirationTimer
+};

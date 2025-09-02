@@ -1,0 +1,1 @@
+new statisticsInformation[MAX_PLAYERS][statisticsInformationEnum];

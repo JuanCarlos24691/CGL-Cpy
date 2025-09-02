@@ -1,0 +1,1 @@
+new zoneInformation[MAX_PLAYERS][zoneInformationEnum];

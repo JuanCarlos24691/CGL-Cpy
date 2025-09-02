@@ -1,0 +1,1 @@
+new playerJailTimer[MAX_PLAYERS] = { INVALID_TIMER };

@@ -1,0 +1,11 @@
+forward InsertCheckPointsInformation(const typeOfNewCheckpoint, const iconOfNewCheckpoint, const insideOfNewCheckpoint, const Float:outsideXOfNewCheckpoint, const Float:outsideYOfNewCheckpoint, const Float:outsideZOfNewCheckpoint, const Float:outsideAngleOfNewCheckpoint, const Float:insideXOfNewCheckpoint, const Float:insideYOfNewCheckpoint, const Float:insideZOfNewCheckpoint, const Float:insideAngleOfNewCheckpoint, const Float:interactionXOfNewCheckpoint, const Float:interactionYOfNewCheckpoint, const Float:interactionZOfNewCheckpoint, const Float:interactionAngleOfNewCheckpoint, const Func:callBack<i>);
+public InsertCheckPointsInformation(const typeOfNewCheckpoint, const iconOfNewCheckpoint, const insideOfNewCheckpoint, const Float:outsideXOfNewCheckpoint, const Float:outsideYOfNewCheckpoint, const Float:outsideZOfNewCheckpoint, const Float:outsideAngleOfNewCheckpoint, const Float:insideXOfNewCheckpoint, const Float:insideYOfNewCheckpoint, const Float:insideZOfNewCheckpoint, const Float:insideAngleOfNewCheckpoint, const Float:interactionXOfNewCheckpoint, const Float:interactionYOfNewCheckpoint, const Float:interactionZOfNewCheckpoint, const Float:interactionAngleOfNewCheckpoint, const Func:callBack<i>) {
+    inline const QueryInline() {
+        @.callBack(cache_affected_rows());
+        Indirect_Release(callBack);
+    }
+
+    if (MySQL_TQueryInline(databaseConnection, using inline QueryInline, "INSERT INTO `check_points`(type, icon, inside, outside_x_coordinate, outside_y_coordinate, outside_z_coordinate, outside_angle, inside_x_coordinate, inside_y_coordinate, inside_z_coordinate, inside_angle, interaction_zone_x_coordinate, interaction_zone_y_coordinate, interaction_zone_z_coordinate, interaction_zone_angle) VALUES('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f')", typeOfNewCheckpoint, iconOfNewCheckpoint, insideOfNewCheckpoint, outsideXOfNewCheckpoint, outsideYOfNewCheckpoint, outsideZOfNewCheckpoint, outsideAngleOfNewCheckpoint, insideXOfNewCheckpoint, insideYOfNewCheckpoint, insideZOfNewCheckpoint, insideAngleOfNewCheckpoint, interactionXOfNewCheckpoint, interactionYOfNewCheckpoint, interactionZOfNewCheckpoint, interactionAngleOfNewCheckpoint))
+        Indirect_Claim(callBack);
+    return 1;
+}

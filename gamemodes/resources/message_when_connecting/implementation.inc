@@ -1,0 +1,1 @@
+#include "resources\message_when_connecting/message_when_connecting.inc"

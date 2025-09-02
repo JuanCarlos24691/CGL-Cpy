@@ -1,0 +1,1 @@
+new rulesAssistantInformation[MAX_PLAYERS][rulesAssistantInformationEnum];

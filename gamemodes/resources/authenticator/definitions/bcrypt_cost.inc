@@ -1,0 +1,1 @@
+#define BCRYPT_COST 12

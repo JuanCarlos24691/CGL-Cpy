@@ -1,0 +1,1 @@
+new Text3D:textOnDuty[MAX_PLAYERS] = { Text3D:INVALID_3DTEXT_ID };

@@ -1,0 +1,6 @@
+#include "resources\tools/return_player_ip.inc"
+#include "resources\tools/clean_up_conversation.inc"
+#include "resources\tools/repair_textdraw_string.inc"
+#include "resources\tools/is_alpha_numeric.inc"
+#include "resources\tools/expel_the_player.inc"
+#include "resources\tools/is_player_paused.inc"

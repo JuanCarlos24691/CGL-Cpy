@@ -1,0 +1,1 @@
+new playerVehicleCreationInfo[MAX_PLAYERS][playerVehicleCreationInfoEnum];

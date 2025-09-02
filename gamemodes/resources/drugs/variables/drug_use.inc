@@ -1,0 +1,1 @@
+new drugUseInformation[MAX_PLAYERS][drugUseInformationEnum];

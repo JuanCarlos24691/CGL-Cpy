@@ -1,0 +1,1 @@
+new messagesWhenSpawningInfo[MAX_PLAYERS][messagesWhenSpawningInfoEnum];

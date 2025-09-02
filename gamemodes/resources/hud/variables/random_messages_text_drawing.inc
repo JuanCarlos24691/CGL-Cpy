@@ -1,0 +1,1 @@
+new Text:randomMessagesTextDrawing[2] = { Text:INVALID_TEXT_DRAW, ... };

@@ -1,0 +1,1 @@
+new Text:timeTextDrawing = Text:INVALID_TEXT_DRAW;

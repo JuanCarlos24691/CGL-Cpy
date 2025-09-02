@@ -1,0 +1,1 @@
+#define MAX_VEHICLE_MODELS (212)

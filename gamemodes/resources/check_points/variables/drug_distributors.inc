@@ -1,0 +1,1 @@
+new drugDistributorsInformation[MAX_PLAYERS][drugDistributorsInformationEnum];
