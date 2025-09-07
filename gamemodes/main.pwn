@@ -104,8 +104,12 @@
 // Animations enumerations
 #include "resources\animations\enumerations/animation_assistant_information.inc"
 
-// Bank vehicle robbery varenumerationsiables
+// Bank vehicle robbery enumerations
 #include "resources\bank_vehicle_robbery\enumerations/bank_vehicle_robbery_information.inc"
+
+// Assault enumerations
+#include "resources\assault\enumerations/assault_information.inc"
+#include "resources\assault\enumerations/assault_player_information.inc"
 
 // Database variables
 #include "resources\database_context\variables/database_connection.inc"
@@ -202,6 +206,11 @@
 // Bank vehicle robbery variables
 #include "resources\bank_vehicle_robbery\variables/bank_vehicle_robbery_information.inc"
 
+// Assault variables
+#include "resources\assault\variables/assault_information.inc"
+#include "resources\assault\variables/assault_player_information.inc"
+#include "resources\assault\variables/name_of_assault_locations.inc"
+
 // Pendiente por reorganizar
 #include "resources\global_variables/implementation.inc"
 #include "resources\tools/implementation.inc"
@@ -257,6 +266,7 @@
 #include "resources\vehicle_creation/implementation.inc"
 #include "resources\damage_report/implementation.inc"
 #include "resources\animations/implementation.inc"
+#include "resources\assault/implementation.inc"
 
 // Importante mantener este modulo al final de la lista para que los datos se guarden correctamente en la base de datos al desconectarse el jugador.
 #include "resources\database_context/update_account_information.inc"
@@ -317,7 +327,7 @@ YCMD:is(playerid, params[], help) {
     return 1;
 }
 
-/* YCMD:printclan(playerid, params[], help) {
+YCMD:printclan(playerid, params[], help) {
     new destinationPlayerId;
 
     if (sscanf(params, "i", destinationPlayerId))
@@ -325,7 +335,7 @@ YCMD:is(playerid, params[], help) {
 
     va_SendClientMessage(playerid, -1, "UUID: %d | Nombre: %s | Tag: %s | Lider: %s", clanInformation[SearchClanIndex(accountInformation[playerid][assignedClan])][UUID], clanInformation[SearchClanIndex(accountInformation[playerid][assignedClan])][name], clanInformation[SearchClanIndex(accountInformation[playerid][assignedClan])][tag], clanInformation[SearchClanIndex(accountInformation[playerid][assignedClan])][leader]);
     return 1;
-} */
+}
 
 YCMD:uuid(playerid, params[], help) {
     new destinationPlayerId;
@@ -341,17 +351,6 @@ YCMD:estado(playerid, params[], help) {
     va_SendClientMessage(playerid, -1, "Registro: %d | En Juego: %d", accountInformation[playerid][loggedIn], accountInformation[playerid][inGame]);
     return 1;
 }
-
-/* YCMD:anims(playerid, params[], help) {
-    ShowAnimsDialog(playerid);
-    return 1;
-}
-
-YCMD:stopanims(playerid, params[], help) {
-    ClearAnimations(playerid, SYNC_ALL);
-    return 1;
-} */
-
 
 YCMD:crearvehiculo(playerid, params[], help) {
     new Float:x, Float:y, Float:z, Float:a;
