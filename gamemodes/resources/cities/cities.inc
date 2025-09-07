@@ -180,7 +180,7 @@ hook OnGameModeInit() {
     citiesInformation[selectedCity] = random(MAX_CITIES);
     SendRconCommand("game.map %s", cityNames[citiesInformation[selectedCity]]);
 
-    SetTimerEx("UpdateCity", 1000, true, "ii", citiesInformation[selectedCity], false);
+    SetTimerEx("UpdateCity", 1000, true, "ii", -1, false);
     SetTimerEx("AnnounceChangeOfCity", 1000, true, "i", false);
     return 1;
 }
