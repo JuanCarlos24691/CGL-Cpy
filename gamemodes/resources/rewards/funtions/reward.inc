@@ -23,6 +23,8 @@ public Reward(const playerid, const killerid, const weapon) {
 
         va_SendClientMessageToAll(-1, ""COLOR_DARK_RED"%s (%d) Asesinó A %s (%d) Y Cobro La Recompensa Que %s Ofrecia Por Su Muerte.", accountInformation[killerid][name], killerid, accountInformation[playerid][name], playerid, nameOfAssaultLocations[citiesInformation[selectedCity]][0]);
         va_SendClientMessage(killerid, -1, ""COLOR_AQUAMARINE3"Recibiste $170000 Extra Por Detener A %s (%d) Mientras Realizaba El Robo.", accountInformation[playerid][name], playerid);
+
+        RestoreAssaultPlayerInformation(playerid);
     }
 
     switch (weapon) {

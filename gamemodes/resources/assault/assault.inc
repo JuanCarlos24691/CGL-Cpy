@@ -16,11 +16,6 @@ hook OnPlayerDisconnect(playerid, text[]) {
     return 1;
 }
 
-hook OnPlayerDeath(playerid, killerid, WEAPON:weapon) {
-    RestoreAssaultPlayerInformation(playerid);
-    return 1;
-}
-
 hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
     if (checkpoint == assaultInformation[aCheckPoint]) {
         if (assaultPlayerInformation[playerid][assaultCompleted])
