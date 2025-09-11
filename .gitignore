@@ -1,0 +1,6 @@
+*.amx
+*.log
+logs
+log.txt
+mysql_log.txt
+server_log.txt

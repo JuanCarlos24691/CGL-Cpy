@@ -6,14 +6,16 @@ public UpdateCity(const city, const bool:omitRequirements) {
     if (omitRequirements == false && (timeInformation[hour] != 23 || timeInformation[minute] != 59 || dayInformation[day] != 6))
         return 1;
 
-    if (city >= 0 && city < MAX_CITIES)
+    if (city >= 0 && city < MAX_CITIES) {
         citiesInformation[selectedCity] = city;
-    else if (citiesInformation[selectedCity] == MAX_CITIES)
-        citiesInformation[selectedCity] = 0;
-    else
+    } else {
         citiesInformation[selectedCity]++;
 
-    SendRconCommand("game.map %s", cityNames[city]);
+        if (citiesInformation[selectedCity] >= MAX_CITIES)
+            citiesInformation[selectedCity] = 0;
+    }
+
+    SendRconCommand("game.map %s", cityNames[citiesInformation[selectedCity]]);
 
     UpdatePlayerClass();
     RestoreTimeInformation(false);
@@ -23,7 +25,7 @@ public UpdateCity(const city, const bool:omitRequirements) {
             TogglePlayerControllable(i, false);
     }
 
-    SetTimerEx("InitiateChangeOfCityForPlayer", 4500, false, "i", city);
+    SetTimerEx("InitiateChangeOfCityForPlayer", 4500, false, "i", citiesInformation[selectedCity]);
     SetTimerEx("FinalizeChangeOfCity", 14500, false);
 
     if (!citiesInformation[changingCity])
