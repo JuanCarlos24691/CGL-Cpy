@@ -1,0 +1,1 @@
+new assaultPlayerInformation[MAX_PLAYERS][assaultPlayerInformationEnum];
