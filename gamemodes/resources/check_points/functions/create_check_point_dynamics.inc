@@ -17,7 +17,7 @@ public CreateCheckPointDynamics(const rows) {
         if (checkPointsInformation[i][virtualWorld] != uniqueIdentifier)
             checkPointsInformation[i][virtualWorld] = uniqueIdentifier;
 
-        if (checkPointsInformation[i][mapIcon] == INVALID_STREAMER_ID)
+        if (checkPointsInformation[i][mapIcon] == INVALID_STREAMER_ID && checkPointsInformation[i][icon] != -1)
             checkPointsInformation[i][mapIcon] = CreateDynamicMapIcon(checkPointsInformation[i][outsideXCoordinate], checkPointsInformation[i][outsideYCoordinate], checkPointsInformation[i][outsideZCoordinate], checkPointsInformation[i][icon], -1, -1, -1, -1, -1);
     }
     return 1;
