@@ -6,6 +6,6 @@ public UpdateBankVehicleRobbery() {
     RestoreBankVehicleRobberyInfo(false);
     CreateBankVehicleRobbery();
 
-    va_SendClientMessageToAll(-1, ""COLOR_AQUAMARINE3"El "COLOR_DARK_GREEN2"Vehiculo De Seguidad"COLOR_AQUAMARINE3" Se Encuentra En "COLOR_DARK_GREEN2"%s"COLOR_AQUAMARINE3". Asaltalo Y Todo El Dinero Sera Tuyo!", cityNames[citiesInformation[selectedCity]]);
+    va_SendClientMessageToAll(-1, ""COLOR_AQUAMARINE2"El "COLOR_AQUAMARINE"Vehiculo De Seguidad"COLOR_AQUAMARINE2" Se Encuentra En "COLOR_AQUAMARINE"%s"COLOR_AQUAMARINE2". Asaltalo Y Todo El Dinero Sera Tuyo!", cityNames[citiesInformation[selectedCity]]);
     return 1;
 }
