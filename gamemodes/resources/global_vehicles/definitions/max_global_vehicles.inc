@@ -1,0 +1,1 @@
+#define MAX_GLOBAL_VEHICLES 1796

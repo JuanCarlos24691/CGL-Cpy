@@ -17,6 +17,8 @@ public CreateCheckPoint(const typeOfCheckPoint, const Float:xCoordinateoftheChec
         case 2: InsertCheckPointsInformation(typeOfCheckPoint, 31, 15, xCoordinateoftheCheckPoint, yCoordinateoftheCheckPoint, zCoordinateoftheCheckPoint, angleCoordinateoftheCheckPoint, 376.305938, 1417.279296, 1081.328125, 0, 0, 0, 0, 0, using inline IInsertCheckPointsInformation);
         case 3: InsertCheckPointsInformation(typeOfCheckPoint, 24, 24, 0, 0, 0, 0, 0, 0, 0, 0, xCoordinateoftheCheckPoint, yCoordinateoftheCheckPoint, zCoordinateoftheCheckPoint, angleCoordinateoftheCheckPoint, using inline IInsertCheckPointsInformation);
         case 4: InsertCheckPointsInformation(typeOfCheckPoint, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, xCoordinateoftheCheckPoint, yCoordinateoftheCheckPoint, zCoordinateoftheCheckPoint, angleCoordinateoftheCheckPoint, using inline IInsertCheckPointsInformation);
+        case 5: InsertCheckPointsInformation(typeOfCheckPoint, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, xCoordinateoftheCheckPoint, yCoordinateoftheCheckPoint, zCoordinateoftheCheckPoint, angleCoordinateoftheCheckPoint, using inline IInsertCheckPointsInformation);
+        case 6: InsertCheckPointsInformation(typeOfCheckPoint, 47, 6, xCoordinateoftheCheckPoint, yCoordinateoftheCheckPoint, zCoordinateoftheCheckPoint, angleCoordinateoftheCheckPoint,  -2240.288330, 137.260086, 1035.414062, 266.450439, -2237.135986, 130.708740, 1035.414062, 182.242538, using inline IInsertCheckPointsInformation);
         default:
             printf("[ENTRADAS] No existe el tipo de entrada especificado.");
     }

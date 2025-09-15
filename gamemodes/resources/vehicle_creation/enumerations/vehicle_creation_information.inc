@@ -1,5 +1,5 @@
 enum vehicleCreationInformationEnum {
-    idOfVehicle,
-    vehicleName[124],
-    vehiclePrice
+    vCModelId,
+    vCVehicleName[124],
+    vCVehiclePrice
 }

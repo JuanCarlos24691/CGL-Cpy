@@ -14,7 +14,7 @@ YCMD:crear(playerid, params[], help) {
     new typeCheckPoint[128];
 
     if (sscanf(params, "z[128]", typeCheckPoint))
-        return va_SendClientMessage(playerid, -1, ""COLOR_RED"Usa: /crear <Banco, Armeria, Casa, droga, hospital>");
+        return va_SendClientMessage(playerid, -1, ""COLOR_RED"Usa: /crear <Banco, Armeria, Casa, droga, hospital, vehiculo-perdido>");
 
     new Float:playerPositionX, Float:playerPositionY, Float:playerPositionZ, Float:playerAngle;
     GetPlayerPos(playerid, playerPositionX, playerPositionY, playerPositionZ);
@@ -30,6 +30,10 @@ YCMD:crear(playerid, params[], help) {
         CreateCheckPoint(3, playerPositionX, playerPositionY, playerPositionZ, playerAngle);
     else if (isequal(typeCheckPoint, "hospital", true))
         CreateCheckPoint(4, playerPositionX, playerPositionY, playerPositionZ, playerAngle);
+    else if (isequal(typeCheckPoint, "vehiculo-perdido", true))
+        CreateCheckPoint(5, playerPositionX, playerPositionY, playerPositionZ, playerAngle);
+    else if (isequal(typeCheckPoint, "mascota", true))
+        CreateCheckPoint(6, playerPositionX, playerPositionY, playerPositionZ, playerAngle);
     else
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"El tipo de entrada que ingresaste no existe, por favor, vuelve a intentarlo. ");
     return 1;

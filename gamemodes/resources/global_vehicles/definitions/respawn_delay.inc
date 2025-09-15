@@ -1,0 +1,1 @@
+#define RESPAWN_DELAY 180 // 3 minutos

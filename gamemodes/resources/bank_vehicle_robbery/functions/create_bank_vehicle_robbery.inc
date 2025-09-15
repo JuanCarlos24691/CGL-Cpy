@@ -1,11 +1,11 @@
 forward CreateBankVehicleRobbery();
 public CreateBankVehicleRobbery() {
-    if (bankVehicleRobberyInformation[vehicle] == INVALID_VEHICLE_ID) {
-        bankVehicleRobberyInformation[vehicle] = CreateVehicle(428, bankVehicleRobberyInformation[xCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[yCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[zCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[angleCoordinate][citiesInformation[selectedCity]], 0, 0, -1);
-        SetVehicleParamsEx(bankVehicleRobberyInformation[vehicle], false, false, false, true, false, false, false);
+    if (bankVehicleRobberyInformation[bVVehicle] == INVALID_VEHICLE_ID) {
+        bankVehicleRobberyInformation[bVVehicle] = CreateVehicle(428, bankVehicleRobberyInformation[bVXCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[bVYCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[bVZCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[bVAngleCoordinate][citiesInformation[selectedCity]], 0, 0, -1);
+        SetVehicleParamsEx(bankVehicleRobberyInformation[bVVehicle], false, false, false, true, false, false, false);
     }
 
-    if (bankVehicleRobberyInformation[label3D] == INVALID_3DTEXT_ID)
-        bankVehicleRobberyInformation[label3D] = CreateDynamic3DTextLabel("/ponerc4", -1, bankVehicleRobberyInformation[xCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[yCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[zCoordinate][citiesInformation[selectedCity]], 20.0, .attachedvehicle = bankVehicleRobberyInformation[vehicle]);
+    if (bankVehicleRobberyInformation[bVLabel3D] == INVALID_3DTEXT_ID)
+        bankVehicleRobberyInformation[bVLabel3D] = CreateDynamic3DTextLabel("/ponerc4", -1, bankVehicleRobberyInformation[bVXCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[bVYCoordinate][citiesInformation[selectedCity]], bankVehicleRobberyInformation[bVZCoordinate][citiesInformation[selectedCity]], 20.0, .attachedvehicle = bankVehicleRobberyInformation[bVVehicle]);
     return 1;
 }

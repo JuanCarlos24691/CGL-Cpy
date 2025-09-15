@@ -30,6 +30,8 @@
 #include "resources\clans\definitions/max_clans_colors.inc"
 #include "resources\clans\definitions/max_clans.inc"
 #include "resources\cities\definitions/max_cities.inc"
+#include "resources\global_vehicles\definitions/max_global_vehicles.inc"
+#include "resources\global_vehicles\definitions/respawn_delay.inc"
 #include "resources\vehicle_creation\definitions/max_player_vehicles.inc"
 #include "resources\vehicle_creation\definitions/max_vehicle_models.inc"
 
@@ -50,10 +52,12 @@
 #include "resources\assistant\enumerations/rules_assistant_information.inc"
 
 // Check Points enumerations
-#include "resources\check_points\enumerations/armory.inc"
-#include "resources\check_points\enumerations/bank.inc"
-#include "resources\check_points\enumerations/drug_distributors.inc"
-#include "resources\check_points\enumerations/hospital.inc"
+#include "resources\check_points\enumerations/armory_information.inc"
+#include "resources\check_points\enumerations/bank_information.inc"
+#include "resources\check_points\enumerations/drug_distributors_information.inc"
+#include "resources\check_points\enumerations/hospital_information.inc"
+#include "resources\check_points\enumerations/lost_vehicle_information.inc"
+#include "resources\check_points\enumerations\lost_vehicle_player_information.inc"
 
 // Violation enumerations
 #include "resources\violation\enumerations/violation_information.inc"
@@ -111,6 +115,9 @@
 #include "resources\assault\enumerations/assault_information.inc"
 #include "resources\assault\enumerations/assault_player_information.inc"
 
+// Gloval vehicles enumerations
+#include "resources\global_vehicles\enumerations/global_vehicles_information.inc"
+
 // Database variables
 #include "resources\database_context\variables/database_connection.inc"
 #include "resources\database_context\variables/ban_information.inc"
@@ -129,10 +136,13 @@
 #include "resources\check_point_timer\variables/check_point_timer.inc"
 
 // Check points variables
-#include "resources\check_points\variables/armory.inc"
-#include "resources\check_points\variables/bank.inc"
-#include "resources\check_points\variables/drug_distributors.inc"
-#include "resources\check_points\variables/hospital.inc"
+#include "resources\check_points\variables/armory_information.inc"
+#include "resources\check_points\variables/bank_information.inc"
+#include "resources\check_points\variables/drug_distributors_information.inc"
+#include "resources\check_points\variables/hospital_information.inc"
+#include "resources\check_points\variables/hospital_information.inc"
+#include "resources\check_points\variables/lost_vehicle_information.inc"
+#include "resources\check_points\variables/lost_vehicle_player_information.inc"
 
 // Violation variables
 #include "resources\violation\variables/violation_information.inc"
@@ -210,6 +220,14 @@
 #include "resources\assault\variables/assault_information.inc"
 #include "resources\assault\variables/assault_player_information.inc"
 #include "resources\assault\variables/name_of_assault_locations.inc"
+
+// Gloval vehicles variables
+#include "resources\global_vehicles\variables/global_vehicles_information.inc"
+#include "resources\global_vehicles\variables\global_vehicles_models_ids.inc"
+#include "resources\global_vehicles\variables\global_vehicles_cordinates.inc"
+
+// Tools variables
+#include "resources\tools\variables\vehicles_names.inc"
 
 // Pendiente por reorganizar
 #include "resources\global_variables/implementation.inc"

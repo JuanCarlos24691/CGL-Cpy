@@ -1,0 +1,1 @@
+new lostVehiclePlayerInformation[MAX_PLAYERS][lostVehiclePlayerInfoEnum];

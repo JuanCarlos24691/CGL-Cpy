@@ -1,0 +1,1 @@
+new globalVehiclesInformation[MAX_GLOBAL_VEHICLES][globalVehiclesInformationEnum];

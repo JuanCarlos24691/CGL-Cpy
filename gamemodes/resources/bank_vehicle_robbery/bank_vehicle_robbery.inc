@@ -6,7 +6,7 @@ hook OnGameModeInit() {
 }
 
 hook OnPlayerPickUpDynPickup(playerid, pickupid) {
-    if (pickupid == bankVehicleRobberyInformation[pickup] && bankVehicleRobberyInformation[pickup] != INVALID_PICKUP) {
+    if (pickupid == bankVehicleRobberyInformation[bVPickup] && bankVehicleRobberyInformation[bVPickup] != INVALID_PICKUP) {
         RestoreBankVehicleRobberyInfo(false);
 
         accountInformation[playerid][cashInHand] += 348000;

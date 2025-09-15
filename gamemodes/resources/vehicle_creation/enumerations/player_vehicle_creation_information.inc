@@ -1,5 +1,5 @@
 enum playerVehicleCreationInfoEnum {
-    vehicles[MAX_PLAYER_VEHICLES],
-    primaryColor,
-    secondaryColor
+    pVVehicles[MAX_PLAYER_VEHICLES],
+    pVPrimaryColor,
+    pVSecondaryColor
 }

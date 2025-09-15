@@ -4,3 +4,4 @@
 #include "resources\tools/is_alpha_numeric.inc"
 #include "resources\tools/expel_the_player.inc"
 #include "resources\tools/is_player_paused.inc"
+#include "resources\tools/get_vehicle_name.inc"
