@@ -31,8 +31,8 @@ hook OnPlayerText(playerid, text[]) {
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
     if (newkeys & KEY_FIRE && petsInformation[playerid][pSInOperation])
-        // RestoreHospitalInformation(playerid, true);
-        return 1;
+        RestorePSTextDrawings(playerid);
+    return 1;
 }
 
 hook OnPlayerEnterDynamicCP(playerid, checkpoint) {

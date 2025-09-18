@@ -5,7 +5,7 @@ enum hospitalInformationEnum {
     Float:hOInteractionZoneXCoordinate,
     Float:hOInteractionZoneYCoordinate,
     Float:hOInteractionZoneZCoordinate,
-    Float:hOInteractionZoneAngle,
-    hOWaitingTime,
+    Float:hOInteractionZoneAngleCoor,
+    hOTWaitingTime,
     hOTExitFromTheCheckPoint
-};
+}; 

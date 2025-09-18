@@ -1,4 +1,4 @@
-YCMD:robar(playerid, params[], help) {
+YCMD:rob(playerid, params[], help) {
     new targetPlayerId;
 
     if (!sscanf(params, "i", targetPlayerId)) {
@@ -13,5 +13,5 @@ YCMD:robar(playerid, params[], help) {
         }
     }
 
-    return va_SendClientMessage(playerid, -1, ""COLOR_RED"Usa: /robar (ID)");
+    return va_SendClientMessage(playerid, -1, ""COLOR_RED"Usa: /rob (ID)");
 }

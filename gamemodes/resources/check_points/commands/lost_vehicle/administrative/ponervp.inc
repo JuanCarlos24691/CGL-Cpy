@@ -1,4 +1,7 @@
 YCMD:ponervp(playerid, params[], help) {
+    if (accountInformation[playerid][administrativeLevel] < 5)
+        return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 5  para poder usar este comando.");
+
     RestoreLVInformation();
     CreateLVInformation();
 

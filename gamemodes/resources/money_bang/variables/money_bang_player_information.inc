@@ -1,0 +1,1 @@
+new moneyBangPlayerInformation[MAX_PLAYERS][moneyBangPlayerInformationEnum];

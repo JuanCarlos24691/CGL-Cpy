@@ -5,10 +5,13 @@ public Steal(const playerid, const targetPlayerId) {
 
     CreateSTTWaitingTime(playerid);
 
+    if (!IsPlayerConnected(targetPlayerId))
+        return va_SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
+
     new Float:playerXCoordinate, Float:playerYCoordinate, Float:playerZCoordinate;
     GetPlayerPos(targetPlayerId, playerXCoordinate, playerYCoordinate, playerZCoordinate);
 
-    if (IsPlayerInRangeOfPoint(playerid, 1.3, playerXCoordinate, playerYCoordinate, playerZCoordinate))
+    if (!IsPlayerInRangeOfPoint(playerid, 1.3, playerXCoordinate, playerYCoordinate, playerZCoordinate))
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes estar cerca del jugador para robarlo.");
 
     if (stealInformation[playerid][sTPreviouslyStolenPlayer] == targetPlayerId)

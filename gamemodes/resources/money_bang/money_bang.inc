@@ -1,6 +1,11 @@
 #include <YSI_Coding\y_hooks>
 
 hook OnGameModeInit() {
+    for (new i = 0; i < MAX_PLAYERS; i++)
+        RestoreMoneyBangPlayerInfo(i);
+
+    RestoreMoneyBangInformation();
+
     new const Float:moneyBangCoordinates[MAX_MONEY_BANG][3] = {
         {-2432.5957, -1620.1436, 526.8685},
         {-2528.2793, -1025.5176, 102.1070},
@@ -63,13 +68,10 @@ hook OnGameModeInit() {
     };
 
     for (new i = 0; i < MAX_MONEY_BANG; i++) {
-        moneyBangInformation[moneyBangXCoordinate][i] = moneyBangCoordinates[i][0];
-        moneyBangInformation[moneyBangYCoordinate][i] = moneyBangCoordinates[i][1];
-        moneyBangInformation[moneyBangZCoordinate][i] = moneyBangCoordinates[i][2];
+        moneyBangInformation[mBXCoordinate][i] = moneyBangCoordinates[i][0];
+        moneyBangInformation[mBYCoordinate][i] = moneyBangCoordinates[i][1];
+        moneyBangInformation[mBZCoordinate][i] = moneyBangCoordinates[i][2];
     }
-
-    moneyBangInformation[moneyBangIndex] = -1;
-    moneyBangInformation[moneyBagPickup] = INVALID_PICKUP;
 
     CreateMoneyBang();
 
@@ -78,21 +80,25 @@ hook OnGameModeInit() {
     return 1;
 }
 
+hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
+    if (newkeys & KEY_FIRE)
+        RestoreMoneyBangPlayerInfo(playerid);
+    return 1;
+}
+
 hook OnPlayerPickUpDynPickup(playerid, pickupid) {
-    if (pickupid == moneyBangInformation[moneyBagPickup] && moneyBangInformation[moneyBagPickup] != INVALID_PICKUP) {
+    if (pickupid == moneyBangInformation[mBPickup] && moneyBangInformation[mBPickup] != INVALID_PICKUP) {
         new randonMoney = 450000 + random(300001);
         accountInformation[playerid][cashInHand] += randonMoney;
 
         GameTextForPlayer(playerid, "~w~Encontraste ~g~$%d", 4500, 4, randonMoney);
         va_SendClientMessage(playerid, -1, ""COLOR_AQUAMARINE2"Felicidades!! Encontraste La Bolsa Del Dinero.");
 
-        va_SendClientMessageToAll(-1, ""COLOR_AQUAMARINE"%s (%d) "COLOR_AQUAMARINE2"En Encontró La MoneyBag Con "COLOR_AQUAMARINE"$%d "COLOR_AQUAMARINE2"Dentro, En "COLOR_AQUAMARINE"%s", accountInformation[playerid][name], playerid, randonMoney, moneyBangLocations[moneyBangInformation[moneyBangIndex]]);
+        va_SendClientMessageToAll(-1, ""COLOR_AQUAMARINE"%s (%d) "COLOR_AQUAMARINE2"En Encontró La MoneyBag Con "COLOR_AQUAMARINE"$%d "COLOR_AQUAMARINE2"Dentro, En "COLOR_AQUAMARINE"%s", accountInformation[playerid][name], playerid, randonMoney, moneyBangLocations[moneyBangInformation[mBIndex]]);
         ApplyAnimation(playerid, "CARRY", "liftup", 3.0, false, false, false, false, SYNC_NONE);
 
         RestoreMoneyBangInformation();
-
-        if (!moneyBangInformation[moneyBangLocated])
-            moneyBangInformation[moneyBangLocated] = true;
+        CreateMBLocated();
     }
     return 1;
 }

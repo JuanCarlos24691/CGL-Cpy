@@ -1,5 +1,5 @@
-forward CreateHospitalTextDrawings(const playerid);
-public CreateHospitalTextDrawings(const playerid) {
+forward CreateHOTextDrawings(const playerid);
+public CreateHOTextDrawings(const playerid) {
     RestoreGlobalTextDrawings(playerid);
 
     for (new i = 0; i < 12; i++) {

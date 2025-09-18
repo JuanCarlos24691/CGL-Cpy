@@ -15,8 +15,8 @@ hook OnPlayerRequestSpawn(playerid) {
         if (accountInformation[playerid][skin] != GetPlayerSkin(playerid))
             accountInformation[playerid][skin] = GetPlayerSkin(playerid);
 
-        SetPlayerSpawn(playerid, hospitalInformation[playerid][hOInteractionZoneXCoordinate], hospitalInformation[playerid][hOInteractionZoneYCoordinate], hospitalInformation[playerid][hOInteractionZoneZCoordinate], hospitalInformation[playerid][hOInteractionZoneAngle], true);
-        RestoreHospitalInformation(playerid, true);
+        SetPlayerSpawn(playerid, hospitalInformation[playerid][hOInteractionZoneXCoordinate], hospitalInformation[playerid][hOInteractionZoneYCoordinate], hospitalInformation[playerid][hOInteractionZoneZCoordinate], hospitalInformation[playerid][hOInteractionZoneAngleCoor], true);
+        RestoreHospitalInformation(playerid);
         return -1;
     }
 

@@ -73,7 +73,7 @@
 #include "resources\hud\enumerations/speedometer_information.inc"
 
 // Inventory enumerations
-#include "resources\inventory\enumerations/inventory.inc"
+#include "resources\inventory\enumerations/inventory_information.inc"
 
 // Messages when spawning enumerations
 #include "resources\messages_when_spawning\enumerations/messages_when_spawning.inc"
@@ -89,7 +89,8 @@
 #include "resources\lotto\enumerations/lottoInformation.inc"
 
 // Money bang enumerations
-#include "resources\money_bang\enumerations/moneyBangInformation.inc"
+#include "resources\money_bang\enumerations/money_bang_information.inc"
+#include "resources\money_bang\enumerations/money_bang_player_information.inc"
 
 // Clans enumerations
 #include "resources\clans\enumerations/clan_assistant_information.inc"
@@ -118,6 +119,9 @@
 
 // Gloval vehicles enumerations
 #include "resources\global_vehicles\enumerations/global_vehicles_information.inc"
+
+// Steal enumerations
+#include "resources\steal\enumerations\steal_information.inc"
 
 // Database variables
 #include "resources\database_context\variables/database_connection.inc"
@@ -166,7 +170,7 @@
 #include "resources\hud\variables/speedometer_information.inc"
 
 // Inventory variables
-#include "resources\inventory\variables/inventory.inc"
+#include "resources\inventory\variables/inventory_information.inc"
 
 // Messages when spawning variables
 #include "resources\messages_when_spawning\variables/messages_when_spawning.inc"
@@ -189,9 +193,9 @@
 #include "resources\day\variables/days_of_the_week.inc"
 
 // Money bang variables
-#include "resources\money_bang\variables/moneyBangInformation.inc"
+#include "resources\money_bang\variables/money_bang_information.inc"
+#include "resources\money_bang\variables/money_bang_player_information.inc"
 #include "resources\money_bang\variables/money_bang_locations.inc"
-#include "resources\money_bang\variables/money_bang_text_drawings.inc"
 
 // Preload animations variables
 #include "resources\preload_animations\variables/animation_library.inc"
@@ -233,9 +237,13 @@
 
 // Tools variables
 #include "resources\tools\variables\vehicles_names.inc"
+#include "resources\tools\variables\player_jail_timer.inc"
+#include "resources\tools\variables\text_on_duty.inc"
+
+// Steal variables
+#include "resources\steal\variables/steal_information.inc"
 
 // Pendiente por reorganizar
-#include "resources\global_variables/implementation.inc"
 #include "resources\tools/implementation.inc"
 
 // Modulos
@@ -286,6 +294,7 @@
 #include "resources\damage_report/implementation.inc"
 #include "resources\animations/implementation.inc"
 #include "resources\assault/implementation.inc"
+#include "resources\steal/implementation.inc"
 
 // Importante mantener este modulo al final de la lista para que los datos se guarden correctamente en la base de datos al desconectarse el jugador.
 #include "resources\database_context/update_account_information.inc"

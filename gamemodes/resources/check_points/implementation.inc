@@ -36,9 +36,27 @@
 #include "resources\check_points\functions\bank\restore_bank_information.inc"
 
 // - Hospital
-#include "resources\check_points\functions\hospital\create_hospital_text_drawings.inc"
-#include "resources\check_points\functions\hospital\hospital_check_point_output.inc"
+#include "resources\check_points\functions\hospital\create_h_o_in_operation.inc"
+#include "resources\check_points\functions\hospital\create_h_o_in_skin_selection.inc"
+#include "resources\check_points\functions\hospital\1_create_h_o_interaction_zone_angle_coordinate.inc"
+#include "resources\check_points\functions\hospital\2_create_h_o_interaction_zone_x_coordinate.inc"
+#include "resources\check_points\functions\hospital\3_create_h_o_interaction_zone_y_coordinate.inc"
+#include "resources\check_points\functions\hospital\4_create_h_o_interaction_zone_z_coordinate.inc"
+#include "resources\check_points\functions\hospital\create_h_o_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\hospital\create_h_o_t_waiting_time.inc"
+#include "resources\check_points\functions\hospital\create_h_o_text_drawings.inc"
+#include "resources\check_points\functions\hospital\h_o_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\hospital\restore_h_o_in_operation.inc"
+#include "resources\check_points\functions\hospital\restore_h_o_in_skin_selection.inc"
+#include "resources\check_points\functions\hospital\5_restore_h_o_interaction_zone_angle_coordinate.inc"
+#include "resources\check_points\functions\hospital\6_restore_h_o_interaction_zone_x_coordinate.inc"
+#include "resources\check_points\functions\hospital\7_restore_h_o_interaction_zone_y_coordinate.inc"
+#include "resources\check_points\functions\hospital\8_restore_h_o_interaction_zone_z_coordinate.inc"
+#include "resources\check_points\functions\hospital\restore_h_o_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\hospital\restore_h_o_t_waiting_time.inc"
+#include "resources\check_points\functions\hospital\restore_h_o_text_drawings.inc"
 #include "resources\check_points\functions\hospital\restore_hospital_information.inc"
+
 
 // - Drug Distributors
 #include "resources\check_points\functions\drug_distributors\create_d_d_in_operation.inc"

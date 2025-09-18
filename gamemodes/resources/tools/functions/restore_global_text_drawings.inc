@@ -12,5 +12,8 @@ public RestoreGlobalTextDrawings(const playerid) {
     RestoreDDTextDrawings(playerid);
     RestoreLVPlayerTextDrawings(playerid);
     RestorePSTextDrawings(playerid);
+    RestoreHOTextDrawings(playerid);
+    RestoreINTextDrawings(playerid);
+    RestoreMBTextDrawings(playerid);
     return 1;
 }

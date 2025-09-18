@@ -6,14 +6,14 @@ hook OnGameModeInit() {
     return 1;
 }
 
-hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
-    if (newkeys & KEY_FIRE && drugDistributorsInformation[playerid][dDInOperation])
-        RestoreDrugDistributorsInfo(playerid);
+hook OnPlayerDisconnect(playerid, text[]) {
+    RestoreDrugDistributorsInfo(playerid);
     return 1;
 }
 
-hook OnPlayerDisconnect(playerid, text[]) {
-    RestoreDrugDistributorsInfo(playerid);
+hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
+    if (newkeys & KEY_FIRE && drugDistributorsInformation[playerid][dDInOperation])
+        RestoreDDTextDrawings(playerid);
     return 1;
 }
 
