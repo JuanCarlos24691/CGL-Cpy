@@ -1,11 +1,11 @@
 enum hospitalInformationEnum {
-    PlayerText:hospitalTextDrawings[12],
-    bool:inOperation,
-    bool:inSkinSelection,
-    Float:interactionZoneXCoordinate,
-    Float:interactionZoneYCoordinate,
-    Float:interactionZoneZCoordinate,
-    Float:interactionZoneAngle,
-    waitingTime,
-    hospitalTimer
+    PlayerText:hOTextDrawings[12],
+    bool:hOInOperation,
+    bool:hOInSkinSelection,
+    Float:hOInteractionZoneXCoordinate,
+    Float:hOInteractionZoneYCoordinate,
+    Float:hOInteractionZoneZCoordinate,
+    Float:hOInteractionZoneAngle,
+    hOWaitingTime,
+    hOTExitFromTheCheckPoint
 };

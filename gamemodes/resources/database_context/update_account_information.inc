@@ -178,7 +178,9 @@ public UpdateAccountInformation(const playerid) {
             accountInformation[playerid][chlamydia] == accountInformationOld[playerid][chlamydia] &&
             accountInformation[playerid][gonorrhea] == accountInformationOld[playerid][gonorrhea] &&
             accountInformation[playerid][syphilis] == accountInformationOld[playerid][syphilis] &&
-            accountInformation[playerid][condoms] == accountInformationOld[playerid][condoms])
+            accountInformation[playerid][condoms] == accountInformationOld[playerid][condoms] &&
+            accountInformation[playerid][pet] == accountInformationOld[playerid][pet] &&
+            isequal(accountInformation[playerid][petName], accountInformationOld[playerid][petName], true))
         return 1;
 
     inline const ISaveAccountInformation(const result) {

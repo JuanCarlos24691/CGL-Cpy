@@ -54,13 +54,15 @@ public LoadAccountInformation(const playerid, const UniversalUniqueIdentifier, c
             cache_get_value_index_int(0, 49, accountInformation[playerid][gonorrhea]);
             cache_get_value_index_int(0, 50, accountInformation[playerid][syphilis]);
             cache_get_value_index_int(0, 51, accountInformation[playerid][condoms]);
+            cache_get_value_index_int(0, 52, accountInformation[playerid][pet]);
+            cache_get_value_index(0, 53, accountInformation[playerid][petName]);
         }
 
         @.callBack(cache_num_rows());
         Indirect_Release(callBack);
     }
 
-    if (MySQL_TQueryInline(databaseConnection, using inline IMySQL_TQueryInline, "SELECT UUID, player_name, skin, level, cash_in_hand, cash_in_the_bank, life_insurance, in_game, administrative_level, on_duty, warnings, deaths, killings, jail_time, mute_time, ban_time, ban_reason, ban_date, assigned_clan, weapon_slot_one, ammo_slot_one, weapon_slot_two, ammo_slot_two, weapon_slot_three, ammo_slot_three, weapon_slot_four, ammo_slot_four, weapon_slot_five, ammo_slot_five, weapon_slot_six, ammo_slot_six, weapon_slot_seven, ammo_slot_seven, weapon_slot_eight, ammo_slot_eight, weapon_slot_nine, ammo_slot_nine, weapon_slot_ten, ammo_slot_ten, weapon_slot_eleven, ammo_slot_eleven, weapon_slot_twelve, ammo_slot_twelve, weapon_slot_thirteen, ammo_slot_thirteen, armour, drugs, aspirin, chlamydia, gonorrhea, syphilis, condoms FROM `accounts` WHERE UUID = %d", UniversalUniqueIdentifier))
+    if (MySQL_TQueryInline(databaseConnection, using inline IMySQL_TQueryInline, "SELECT UUID, player_name, skin, level, cash_in_hand, cash_in_the_bank, life_insurance, in_game, administrative_level, on_duty, warnings, deaths, killings, jail_time, mute_time, ban_time, ban_reason, ban_date, assigned_clan, weapon_slot_one, ammo_slot_one, weapon_slot_two, ammo_slot_two, weapon_slot_three, ammo_slot_three, weapon_slot_four, ammo_slot_four, weapon_slot_five, ammo_slot_five, weapon_slot_six, ammo_slot_six, weapon_slot_seven, ammo_slot_seven, weapon_slot_eight, ammo_slot_eight, weapon_slot_nine, ammo_slot_nine, weapon_slot_ten, ammo_slot_ten, weapon_slot_eleven, ammo_slot_eleven, weapon_slot_twelve, ammo_slot_twelve, weapon_slot_thirteen, ammo_slot_thirteen, armour, drugs, aspirin, chlamydia, gonorrhea, syphilis, condoms, pet, pet_name FROM `accounts` WHERE UUID = %d", UniversalUniqueIdentifier))
         Indirect_Claim(callBack);
     return 1;
 }

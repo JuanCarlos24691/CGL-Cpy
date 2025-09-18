@@ -2,9 +2,9 @@
 
 hook OnGameModeInit() {
     for (new i = 0; i < MAX_PLAYERS; i++)
-        RestoreLostVehiclePlayerInfo(i);
+        RestoreLVPlayerInformation(i);
 
-    SetTimerEx("UpdateLostVehicle", 1000, true);
+    SetTimerEx("UpdateLV", 1000, true);
     return 1;
 }
 
@@ -29,7 +29,7 @@ hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
     if (newkeys & KEY_FIRE)
-        RestoreLostVehicleTextDrawings(playerid);
+        RestoreLVPlayerTextDrawings(playerid);
     return 1;
 }
 

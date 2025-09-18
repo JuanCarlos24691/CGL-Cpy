@@ -6,7 +6,8 @@ hook OnPlayerConnect(playerid) {
     return 1;
 }
 
-hook OnPlayerDisconnect(playerid) {
+hook OnPlayerDisconnect(playerid, reasonForDisconnection) {
+    DesconnectiongNotice(playerid, reasonForDisconnection);
     RestoreLoginAttemptInformation(playerid);
     return 1;
 }
@@ -14,6 +15,8 @@ hook OnPlayerDisconnect(playerid) {
 forward Authenticator(const playerid);
 public Authenticator(const playerid) {
     strcpy(accountInformation[playerid][name], ReturnPlayerName(playerid));
+    ConnectiongNotice(playerid);
+
     PlayerView(playerid);
 
     if (!IsAlphaNumeric(accountInformation[playerid][name])) {

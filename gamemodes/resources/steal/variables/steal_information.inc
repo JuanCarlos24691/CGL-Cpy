@@ -1,0 +1,1 @@
+new stealInformation[MAX_PLAYERS][stealInformationEnum];

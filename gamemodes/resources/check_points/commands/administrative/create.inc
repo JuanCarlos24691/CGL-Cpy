@@ -14,7 +14,7 @@ YCMD:crear(playerid, params[], help) {
     new typeCheckPoint[128];
 
     if (sscanf(params, "z[128]", typeCheckPoint))
-        return va_SendClientMessage(playerid, -1, ""COLOR_RED"Usa: /crear <Banco, Armeria, Casa, droga, hospital, vehiculo-perdido>");
+        return va_SendClientMessage(playerid, -1, ""COLOR_RED"Usa: /crear <Banco, Armeria, Casa, droga, hospital, vehiculo-perdido, mascota>");
 
     new Float:playerPositionX, Float:playerPositionY, Float:playerPositionZ, Float:playerAngle;
     GetPlayerPos(playerid, playerPositionX, playerPositionY, playerPositionZ);

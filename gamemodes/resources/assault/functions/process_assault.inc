@@ -1,6 +1,6 @@
 forward ProcessAssault(const playerid);
 public ProcessAssault(const playerid) {
-    if (assaultPlayerInformation[playerid][assaultCompleted] == false)
+    if (assaultPlayerInformation[playerid][aAssaultCompleted] == false)
         return GameTextForPlayer(playerid, "~w~Robo_en_proceso~y~~n~quedate_en_el~r~~n~checkpoint_rojo", 2100, 3);
 
     RestoreATInProgress();

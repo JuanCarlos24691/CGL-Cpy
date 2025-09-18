@@ -1,5 +1,5 @@
 forward Violate(const playerid, const destinationPlayerId);
-public Violate(const playerid, const destinationPlayerId) {
+public Violate(const playerid, const destinationPlayerId) { 
     if (violationInformation[playerid][playerPreviouslyViolated] == destinationPlayerId)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"No Puedes Violar Dos Veces Seguidas Al Mismo Jugador.");
 

@@ -1,7 +1,7 @@
 #include <YSI_Coding\y_hooks>
 
 hook OnPlayerDeath(playerid, killerid, WEAPON:weapon) {
-    if (hospitalInformation[playerid][inSkinSelection])
+    if (hospitalInformation[playerid][hOInSkinSelection])
         return -1;
 
     Penalize(playerid, killerid);

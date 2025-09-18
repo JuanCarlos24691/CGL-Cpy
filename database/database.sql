@@ -107,6 +107,8 @@ CREATE TABLE `accounts` (
   `gonorrhea` TINYINT(1) NOT NULL DEFAULT '0',
   `syphilis` TINYINT(1) NOT NULL DEFAULT '0',
   `condoms` INT NOT NULL DEFAULT '0',
+  `pet` INT NOT NULL DEFAULT '0',
+  `pet_name` VARCHAR(7) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'Unnamed',
   PRIMARY KEY (`UUID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 

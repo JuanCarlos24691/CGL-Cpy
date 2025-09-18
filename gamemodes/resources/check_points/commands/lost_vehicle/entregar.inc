@@ -38,7 +38,7 @@ YCMD:entregar(playerid, params[], help) {
                         va_SendClientMessageToAll(-1, ""COLOR_DARK_GREEN2"%s (%d) "COLOR_AQUAMARINE3"Entrego El Vehiculo Perdido De "COLOR_DARK_GREEN2"Karl Benz, "COLOR_AQUAMARINE3"Recompensa: "COLOR_DARK_GREEN2"$250.000", accountInformation[playerid][name], playerid);
                     }
 
-                    RestoreLostVehicleInformation();
+                    RestoreLVInformation();
                     SetVehicleToRespawn(recoveredVehicle);
                 }
             }
@@ -49,14 +49,5 @@ YCMD:entregar(playerid, params[], help) {
     }
 
     va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes Estar Serca De Un Punto De Entrega Para Poder El Vehiculo.");
-    return 1;
-}
-
-YCMD:irvp(playerid, params[], help) {
-    for (new i = 0; i < MAX_GLOBAL_VEHICLES; i++) {
-        if (lostVehicleInformation[lVlost][i] == true) {
-            SetPlayerPos(playerid, globalVehiclesInformation[i][gVXCoordinate], globalVehiclesInformation[i][gVYCoordinate], globalVehiclesInformation[i][gVZCoordinate]);
-        }
-    }
     return 1;
 }

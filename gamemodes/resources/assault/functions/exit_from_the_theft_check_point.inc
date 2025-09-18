@@ -3,12 +3,12 @@ public ExitFromTheTheftCheckPoint(const playerid) {
     if (assaultPlayerInformation[playerid][aAtTheCheckPoint] == true && IsPlayerInCheckpoint(playerid))
         return 1;
 
-    if (assaultPlayerInformation[playerid][inAssault]) {
+    if (assaultPlayerInformation[playerid][aInAssault]) {
         RestoreAssaultPlayerInformation(playerid);
         va_SendClientMessage(playerid, -1, ""COLOR_RED"Tu Robo Fue Cancelado Por Abandonar El Checkpoint.");
     }
 
-    if (assaultPlayerInformation[playerid][assaultCompleted])
+    if (assaultPlayerInformation[playerid][aAssaultCompleted])
         return RestoreCompletedATextDrawings(playerid);
 
     RestoreATextDrawings(playerid);

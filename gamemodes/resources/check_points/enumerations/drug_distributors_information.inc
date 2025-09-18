@@ -1,5 +1,5 @@
 enum drugDistributorsInformationEnum {
-    PlayerText:drugDistributorsTextDrawings[11],
-    bool:inOperation,
-    drugDistributorsTimer
+    PlayerText:dDTextDrawings[11],
+    bool:dDInOperation,
+    dDTExitFromTheCheckPoint
 };

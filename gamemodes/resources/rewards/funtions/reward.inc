@@ -18,7 +18,7 @@ public Reward(const playerid, const killerid, const weapon) {
     if (accountInformation[killerid][assignedClan] != NO_TEAM)
         clanInformation[SearchClanIndex(accountInformation[killerid][assignedClan])][level]++;
 
-    if (assaultPlayerInformation[playerid][assaultCompleted]) {
+    if (assaultPlayerInformation[playerid][aAssaultCompleted]) {
         accountInformation[killerid][cashInHand] += 170000;
 
         va_SendClientMessageToAll(-1, ""COLOR_DARK_RED"%s (%d) Asesinó A %s (%d) Y Cobro La Recompensa Que %s Ofrecia Por Su Muerte.", accountInformation[killerid][name], killerid, accountInformation[playerid][name], playerid, nameOfAssaultLocations[citiesInformation[selectedCity]][0]);

@@ -1,16 +1,14 @@
 #include <YSI_Coding\y_hooks>
 
 hook OnGameModeInit() {
-    for (new i = 0; i < MAX_PLAYERS; i++) {
-        for (new a = 0; a < 58; a++)
-            animationAssistantInformation[i][firstTextDrawingOfAssistance][a] = PlayerText:INVALID_TEXT_DRAW;
+    for (new i = 0; i < MAX_PLAYERS; i++)
+        RestoreAnimationAssistantInfo(i);
+    return 1;
+}
 
-        for (new b = 0; b < 12; b++)
-            animationAssistantInformation[i][secondTextDrawingOfAssistance][b] = PlayerText:INVALID_TEXT_DRAW;
-
-        for (new b = 0; b < 11; b++)
-            animationAssistantInformation[i][thirdTextDrawingOfAssistance][b] = PlayerText:INVALID_TEXT_DRAW;
-    }
+hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
+    if (newkeys & KEY_FIRE && animationAssistantInformation[playerid][aNInOperation])
+        RestoreAnimationAssistantInfo(playerid);
     return 1;
 }
 

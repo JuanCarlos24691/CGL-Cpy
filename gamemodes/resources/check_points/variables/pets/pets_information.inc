@@ -1,0 +1,1 @@
+new petsInformation[MAX_PLAYERS][petsInformationEnum];

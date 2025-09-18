@@ -1,12 +1,8 @@
 #include <YSI_Coding\y_hooks>
 
 hook OnGameModeInit() {
-    for (new i = 0; i < MAX_PLAYERS; i++) {
-        for (new e = 0; e < 8; e++)
-            bankInformation[i][bankTextDrawings][e] = PlayerText:INVALID_TEXT_DRAW;
-
-        bankInformation[i][bankTimer] = INVALID_TIMER;
-    }
+    for (new i = 0; i < MAX_PLAYERS; i++)
+        RestoreBankInformation(i);
     return 1;
 }
 
@@ -24,7 +20,7 @@ hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
 
             SetPlayerInterior(playerid, checkPointsInformation[i][inside]);
             SetPlayerVirtualWorld(playerid, checkPointsInformation[i][virtualWorld]);
-            return ~0;
+            return -1;
         } else if (checkpoint == checkPointsInformation[i][insideCheckPoint] && checkPointsInformation[i][type] == 0) {
             SetPlayerPos(playerid, checkPointsInformation[i][outsideXCoordinate], checkPointsInformation[i][outsideYCoordinate], checkPointsInformation[i][outsideZCoordinate]);
             SetPlayerFacingAngle(playerid, checkPointsInformation[i][outsideAngle]);
@@ -32,53 +28,49 @@ hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
 
             SetPlayerInterior(playerid, 0);
             SetPlayerVirtualWorld(playerid, 0);
-            return ~0;
+            return -1;
         } else if (checkpoint == checkPointsInformation[i][interactionZoneCheckPoint] && checkPointsInformation[i][type] == 0) {
-            CreateBankTextDrawings(playerid, accountInformation[playerid][cashInTheBank]);
-
-            if (!bankInformation[playerid][inOperation])
-                bankInformation[playerid][inOperation] = true;
-
-            if (bankInformation[playerid][bankTimer] == INVALID_TIMER)
-                bankInformation[playerid][bankTimer] = SetTimerEx("BankCheckPointOutput", 500, true, "i", playerid);
-            return ~0;
+            CreateBATextDrawings(playerid, accountInformation[playerid][cashInTheBank]);
+            CreateBAInOperation(playerid);
+            CreateBATExitFromTheCheckPoint(playerid);
+            return -1;
         }
     }
     return 1;
 }
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
-    if (newkeys & KEY_FIRE && bankInformation[playerid][inOperation])
+    if (newkeys & KEY_FIRE && bankInformation[playerid][bAInOperation])
         RestoreBankInformation(playerid);
     return 1;
 }
 
-hook OnPlayerText(playerid, text[]) {
-    if (bankInformation[playerid][inOperation]) {
-        if (bankInformation[playerid][depositingCash] || bankInformation[playerid][withdrawingCash])
+hook OnPlayerText(playerid, text[]) { 
+    if (bankInformation[playerid][bAInOperation]) {
+        if (bankInformation[playerid][bADepositingCash] || bankInformation[playerid][bAWithdrawingCash])
             ApplyAnimation(playerid, "INT_SHOP", "shop_pay", 3.0, false, false, false, false, SYNC_NONE);
 
         new wholeNumber = strval(text);
 
-        if (!bankInformation[playerid][depositingCash] && wholeNumber == 1) {
-            bankInformation[playerid][depositingCash] = true;
-            bankInformation[playerid][withdrawingCash] = false;
+        if (!bankInformation[playerid][bADepositingCash] && wholeNumber == 1) {
+            bankInformation[playerid][bADepositingCash] = true;
+            bankInformation[playerid][bAWithdrawingCash] = false;
 
             for (new i = 3; i <= 5; i++)
-                PlayerTextDrawHide(playerid, bankInformation[playerid][bankTextDrawings][i]);
+                PlayerTextDrawHide(playerid, bankInformation[playerid][bATextDrawings][i]);
 
-            PlayerTextDrawSetString(playerid, bankInformation[playerid][bankTextDrawings][1], "~g~~h~Depositar_dinero");
-            PlayerTextDrawSetString(playerid, bankInformation[playerid][bankTextDrawings][2], "Saldo_Cuenta_Bancaria_~g~$_%d", accountInformation[playerid][cashInTheBank]);
+            PlayerTextDrawSetString(playerid, bankInformation[playerid][bATextDrawings][1], "~g~~h~Depositar_dinero");
+            PlayerTextDrawSetString(playerid, bankInformation[playerid][bATextDrawings][2], "Saldo_Cuenta_Bancaria_~g~$_%d", accountInformation[playerid][cashInTheBank]);
             return ~0;
-        } else if (!bankInformation[playerid][withdrawingCash] && wholeNumber == 2) {
-            bankInformation[playerid][withdrawingCash] = true;
-            bankInformation[playerid][depositingCash] = false;
+        } else if (!bankInformation[playerid][bADepositingCash] && wholeNumber == 2) {
+            bankInformation[playerid][bAWithdrawingCash] = true;
+            bankInformation[playerid][bADepositingCash] = false;
 
             for (new i = 3; i <= 5; i++)
-                PlayerTextDrawHide(playerid, bankInformation[playerid][bankTextDrawings][i]);
+                PlayerTextDrawHide(playerid, bankInformation[playerid][bATextDrawings][i]);
 
-            PlayerTextDrawSetString(playerid, bankInformation[playerid][bankTextDrawings][1], "~g~~h~Retirar_dinero");
-            PlayerTextDrawSetString(playerid, bankInformation[playerid][bankTextDrawings][2], "Saldo_Cuenta_Bancaria_~g~$_%d", accountInformation[playerid][cashInTheBank]);
+            PlayerTextDrawSetString(playerid, bankInformation[playerid][bATextDrawings][1], "~g~~h~Retirar_dinero");
+            PlayerTextDrawSetString(playerid, bankInformation[playerid][bATextDrawings][2], "Saldo_Cuenta_Bancaria_~g~$_%d", accountInformation[playerid][cashInTheBank]);
             return ~0;
         } else if (wholeNumber == 3) {
             if (accountInformation[playerid][lifeInsurance] == 5) {
@@ -98,7 +90,7 @@ hook OnPlayerText(playerid, text[]) {
             va_SendClientMessage(playerid, -1, ""COLOR_DARK_GREEN"Ahora Tienes %d Seguros De Vida.", accountInformation[playerid][lifeInsurance]);
             return ~0;
         } else {
-            if (bankInformation[playerid][depositingCash] && !bankInformation[playerid][withdrawingCash]) {
+            if (bankInformation[playerid][bADepositingCash] && !bankInformation[playerid][bAWithdrawingCash]) {
                 if (wholeNumber > accountInformation[playerid][cashInHand]) {
                     va_SendClientMessage(playerid, -1, ""COLOR_RED"No tienes suficiente dinero en efectivo para realizar esta operacion.");
                     return ~0;
@@ -111,7 +103,7 @@ hook OnPlayerText(playerid, text[]) {
 
                 va_SendClientMessage(playerid, -1, ""COLOR_DARK_GREEN"Deposito $%d En Su Cuenta, Saldo Actual: $%d", wholeNumber, accountInformation[playerid][cashInTheBank]);
                 return ~0;
-            } else if (bankInformation[playerid][withdrawingCash] && !bankInformation[playerid][depositingCash]) {
+            } else if (bankInformation[playerid][bAWithdrawingCash] && !bankInformation[playerid][bADepositingCash]) {
                 if (wholeNumber > accountInformation[playerid][cashInTheBank]) {
                     va_SendClientMessage(playerid, -1, ""COLOR_RED"No tienes suficiente dinero en el banco para realizar esta operacion.");
                     return ~0;

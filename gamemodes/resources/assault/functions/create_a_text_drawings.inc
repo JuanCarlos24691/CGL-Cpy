@@ -1,5 +1,7 @@
 forward CreateATextDrawings(const playerid);
 public CreateATextDrawings(const playerid) {
+    RestoreGlobalTextDrawings(playerid);
+    
     for (new i = 0; i < 4; i++) {
         switch (i) {
             case 0: {

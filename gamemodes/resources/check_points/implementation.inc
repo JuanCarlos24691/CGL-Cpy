@@ -1,23 +1,38 @@
 // Functions
 
 // - Lost Vehicle
-#include "resources\check_points\functions\lost_vehicle\create_lost_vehicle_text_drawings.inc"
-#include "resources\check_points\functions\lost_vehicle\create_lost_vehicle_information.inc"
-#include "resources\check_points\functions\lost_vehicle\restore_lost_vehicle_text_drawings.inc"
+
+#include "resources\check_points\functions\lost_vehicle\create_l_v_player_text_drawings.inc"
+#include "resources\check_points\functions\lost_vehicle\create_l_v_information.inc"
+#include "resources\check_points\functions\lost_vehicle\restore_l_v_player_text_drawings.inc"
 #include "resources\check_points\functions\lost_vehicle\restore_l_v_lost.inc"
 #include "resources\check_points\functions\lost_vehicle\restore_l_v_model_id.inc"
-#include "resources\check_points\functions\lost_vehicle\restore_lost_vehicle_information.inc"
-#include "resources\check_points\functions\lost_vehicle\restore_lost_vehicle_player_information.inc"
-#include "resources\check_points\functions\lost_vehicle\update_lost_vehicle.inc"
+#include "resources\check_points\functions\lost_vehicle\restore_l_v_information.inc"
+#include "resources\check_points\functions\lost_vehicle\restore_l_v_player_information.inc"
+#include "resources\check_points\functions\lost_vehicle\update_l_v.inc"
 
 // - Armory
-#include "resources\check_points\functions\armory\armory_check_point_output.inc"
-#include "resources\check_points\functions\armory\create_armory_text_drawings.inc"
+#include "resources\check_points\functions\armory\a_r_texit_from_the_check_point.inc"
+#include "resources\check_points\functions\armory\create_a_r_in_operation.inc"
+#include "resources\check_points\functions\armory\create_a_r_text_drawings.inc"
+#include "resources\check_points\functions\armory\create_a_r_texit_from_the_check_point.inc"
+#include "resources\check_points\functions\armory\restore_a_r_in_operation.inc"
+#include "resources\check_points\functions\armory\restore_a_r_texit_from_the_check_point.inc"
+#include "resources\check_points\functions\armory\restore_a_r_text_drawings.inc"
 #include "resources\check_points\functions\armory\restore_armory_information.inc"
 
 // - Bank
-#include "resources\check_points\functions\bank\bank_check_point_output.inc"
-#include "resources\check_points\functions\bank\create_bank_text_drawings.inc"
+#include "resources\check_points\functions\bank\b_a_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\bank\create_b_a_depositing_cash.inc"
+#include "resources\check_points\functions\bank\create_b_a_in_operation.inc"
+#include "resources\check_points\functions\bank\create_b_a_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\bank\create_b_a_text_drawings.inc"
+#include "resources\check_points\functions\bank\create_b_a_withdrawing_cash.inc"
+#include "resources\check_points\functions\bank\restore_b_a_depositing_cash.inc"
+#include "resources\check_points\functions\bank\restore_b_a_in_operation.inc"
+#include "resources\check_points\functions\bank\restore_b_a_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\bank\restore_b_a_text_drawings.inc"
+#include "resources\check_points\functions\bank\restore_b_a_withdrawing_cash.inc"
 #include "resources\check_points\functions\bank\restore_bank_information.inc"
 
 // - Hospital
@@ -26,9 +41,28 @@
 #include "resources\check_points\functions\hospital\restore_hospital_information.inc"
 
 // - Drug Distributors
-#include "resources\check_points\functions\drug_distributors\create_drug_distributors_td.inc"
-#include "resources\check_points\functions\drug_distributors\drug_distributors_check_point_output.inc"
-#include "resources\check_points\functions\drug_distributors\restore_drug_distributors_info.inc"
+#include "resources\check_points\functions\drug_distributors\create_d_d_in_operation.inc"
+#include "resources\check_points\functions\drug_distributors\create_d_d_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\drug_distributors\create_d_d_text_drawings.inc"
+#include "resources\check_points\functions\drug_distributors\d_d_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\drug_distributors\restore_d_d_in_operation.inc"
+#include "resources\check_points\functions\drug_distributors\restore_d_d_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\drug_distributors\restore_d_d_text_drawings.inc"
+#include "resources\check_points\functions\drug_distributors\restore_drug_distributors_information.inc"
+
+// - Pets
+#include "resources\check_points\functions\pets\buy_new_pet.inc"
+#include "resources\check_points\functions\pets\charge_fees_for_pets.inc"
+#include "resources\check_points\functions\pets\create_p_s_in_operation.inc"
+#include "resources\check_points\functions\pets\restore_p_s_in_operation.inc"
+#include "resources\check_points\functions\pets\p_s_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\pets\create_p_s_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\pets\create_p_s_t_waiting_time.inc"
+#include "resources\check_points\functions\pets\create_p_s_text_drawings.inc"
+#include "resources\check_points\functions\pets\restore_p_s_t_exit_from_the_check_point.inc"
+#include "resources\check_points\functions\pets\restore_pets_information.inc"
+#include "resources\check_points\functions\pets\restore_p_s_t_waiting_time.inc"
+#include "resources\check_points\functions\pets\restore_p_s_text_drawings.inc"
 
 #include "resources\check_points/functions/create_check_point_dynamics.inc"
 #include "resources\check_points\functions/create_check_point.inc"
@@ -42,9 +76,14 @@
 #include "resources\check_points\commands\lost_vehicle\vp.inc"
 #include "resources\check_points\commands\lost_vehicle\administrative\ponervp.inc"
 
+// - Pets
+#include "resources\check_points\commands\pets\atacar.inc"
+#include "resources\check_points\commands\pets\abandonarmascota.inc"
+
 #include "resources\check_points/check_points.inc"
 #include "resources\check_points/bank.inc"
 #include "resources\check_points/armory.inc"
 #include "resources\check_points/drug_distributors.inc"
 #include "resources\check_points/hospital.inc"
 #include "resources\check_points/lost_vehicle.inc"
+#include "resources\check_points/pets.inc"

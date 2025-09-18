@@ -2,7 +2,12 @@
 #include "resources\animations\functions/create_first_animation_assistant_text_draw.inc"
 #include "resources\animations\functions/create_second_animation_assistant_text_draw.inc"
 #include "resources\animations\functions/create_third_animation_assistant_text_draw.inc"
+#include "resources\animations\functions/create_a_n_in_operation.inc"
 #include "resources\animations\functions/restore_animation_assistant_information.inc"
+#include "resources\animations\functions/restore_a_n_in_operation.inc"
+#include "resources\animations\functions/restore_first_animation_assistant_text_draw.inc"
+#include "resources\animations\functions/restore_second_animation_assistant_text_draw.inc"
+#include "resources\animations\functions/restore_third_animation_assistant_text_draw.inc"
 
 // Commands
 

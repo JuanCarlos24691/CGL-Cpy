@@ -1,7 +1,7 @@
 enum bankInformationEnum {
-    PlayerText:bankTextDrawings[8],
-    bool:inOperation,
-    bool:depositingCash,
-    bool:withdrawingCash,
-    bankTimer
+    PlayerText:bATextDrawings[8],
+    bool:bAInOperation,
+    bool:bADepositingCash,
+    bool:bAWithdrawingCash,
+    bATExitFromTheCheckPoint
 };

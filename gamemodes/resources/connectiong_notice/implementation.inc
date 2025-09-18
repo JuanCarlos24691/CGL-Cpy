@@ -1,1 +1,0 @@
-#include "resources\connectiong_notice/connectiong_notice.inc"

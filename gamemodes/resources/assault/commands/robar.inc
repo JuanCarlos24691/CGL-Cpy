@@ -1,5 +1,5 @@
 YCMD:robar(playerid, params[], help) {
-    if (assaultPlayerInformation[playerid][assaultCompleted])
+    if (assaultPlayerInformation[playerid][aAssaultCompleted])
         return CreateCompletedATextDrawings(playerid, nameOfAssaultLocations[citiesInformation[selectedCity]][1]);
 
     if (!IsPlayerInRangeOfPoint(playerid, 1.2, assaultInformation[ax][citiesInformation[selectedCity]], assaultInformation[ay][citiesInformation[selectedCity]], assaultInformation[az][citiesInformation[selectedCity]]))

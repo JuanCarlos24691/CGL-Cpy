@@ -18,7 +18,7 @@ hook OnPlayerDisconnect(playerid, text[]) {
 
 hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
     if (checkpoint == assaultInformation[aCheckPoint]) {
-        if (assaultPlayerInformation[playerid][assaultCompleted])
+        if (assaultPlayerInformation[playerid][aAssaultCompleted])
             return CreateCompletedATextDrawings(playerid, nameOfAssaultLocations[citiesInformation[selectedCity]][1]);
 
         CreateATextDrawings(playerid);
@@ -29,7 +29,7 @@ hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
 }
 
 hook OnPlayerEnterDynRaceCP(playerid, checkpoint) {
-    if (checkpoint == assaultPlayerInformation[playerid][aDCheckPoint] && assaultPlayerInformation[playerid][assaultCompleted]) {
+    if (checkpoint == assaultPlayerInformation[playerid][aDCheckPoint] && assaultPlayerInformation[playerid][aAssaultCompleted]) {
         if (GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
             return va_SendClientMessage(playerid, -1, ""COLOR_RED"No Puedes Terminar El Robo A Pie.");
 
@@ -43,7 +43,7 @@ hook OnPlayerEnterDynRaceCP(playerid, checkpoint) {
 }
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
-    if (newkeys & KEY_FIRE && assaultPlayerInformation[playerid][assaultCompleted])
+    if (newkeys & KEY_FIRE && assaultPlayerInformation[playerid][aAssaultCompleted])
         RestoreCompletedATextDrawings(playerid);
     return 1;
 }

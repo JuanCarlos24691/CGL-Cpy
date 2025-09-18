@@ -1,5 +1,7 @@
 forward CreateCompletedATextDrawings(const playerid, const hidingplace[]);
 public CreateCompletedATextDrawings(const playerid, const hidingplace[]) {
+    RestoreGlobalTextDrawings(playerid);
+
     for (new i = 0; i < 6; i++) {
         switch (i) {
             case 0: {

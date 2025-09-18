@@ -1,4 +1,4 @@
 enum rulesAssistantInformationEnum {
-    PlayerText:textDrawings[14],
-    inUse
+    PlayerText:rATextDrawings[14],
+    bool:rAInOperation
 };

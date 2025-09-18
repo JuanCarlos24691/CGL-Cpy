@@ -2,8 +2,7 @@
 
 hook OnGameModeInit() {
     for (new i = 0; i < MAX_PLAYERS; i++)
-        for (new e = 0; e < 5; e++)
-            assistantInformation[i][textDrawings][e] = PlayerText:INVALID_TEXT_DRAW;
+        RestoreAssistantInformation(i);
     return 1;
 }
 
@@ -13,14 +12,9 @@ hook OnPlayerDisconnect(playerid, text[]) {
 }
 
 hook OnPlayerText(playerid, text[]) {
-    if (assistantInformation[playerid][inOperation]) {
+    if (assistantInformation[playerid][aSInOperation]) {
         if (isequal(text, "1", true)) {
-            RestoreAssistantInformation(playerid);
             CreateClanWizardTextDrawings(playerid);
-
-            if (!clanAssistantInformation[playerid][inOperation])
-                clanAssistantInformation[playerid][inOperation] = true;
-
             return ~0;
         }
     }
@@ -28,7 +22,7 @@ hook OnPlayerText(playerid, text[]) {
 }
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
-    if (newkeys & KEY_FIRE && assistantInformation[playerid][inOperation])
+    if (newkeys & KEY_FIRE && assistantInformation[playerid][aSInOperation])
         RestoreAssistantInformation(playerid);
     return 1;
 }

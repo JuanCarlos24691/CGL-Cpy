@@ -11,11 +11,11 @@ hook OnPlayerDisconnect(playerid, text[]) {
 }
 
 hook OnPlayerRequestSpawn(playerid) {
-    if (hospitalInformation[playerid][inSkinSelection]) {
+    if (hospitalInformation[playerid][hOInSkinSelection]) {
         if (accountInformation[playerid][skin] != GetPlayerSkin(playerid))
             accountInformation[playerid][skin] = GetPlayerSkin(playerid);
 
-        SetPlayerSpawn(playerid, hospitalInformation[playerid][interactionZoneXCoordinate], hospitalInformation[playerid][interactionZoneYCoordinate], hospitalInformation[playerid][interactionZoneZCoordinate], hospitalInformation[playerid][interactionZoneAngle], true);
+        SetPlayerSpawn(playerid, hospitalInformation[playerid][hOInteractionZoneXCoordinate], hospitalInformation[playerid][hOInteractionZoneYCoordinate], hospitalInformation[playerid][hOInteractionZoneZCoordinate], hospitalInformation[playerid][hOInteractionZoneAngle], true);
         RestoreHospitalInformation(playerid, true);
         return -1;
     }
@@ -25,10 +25,10 @@ hook OnPlayerRequestSpawn(playerid) {
 }
 
 hook OnPlayerRequestClass(playerid, classid) {
-    if (!hospitalInformation[playerid][inSkinSelection] && accountInformation[playerid][exists])
+    if (!hospitalInformation[playerid][hOInSkinSelection] && accountInformation[playerid][exists])
         SetPlayerSkin(playerid, accountInformation[playerid][skin]);
 
-    if (hospitalInformation[playerid][inSkinSelection])
+    if (hospitalInformation[playerid][hOInSkinSelection])
         PlayerView(playerid);
     return 1;
 }

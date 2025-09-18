@@ -1,12 +1,8 @@
 #include <YSI_Coding\y_hooks>
 
 hook OnGameModeInit() {
-    for (new i = 0; i < MAX_PLAYERS; i++) {
-        for (new e = 0; e < 8; e++)
-            hospitalInformation[i][hospitalTextDrawings][e] = PlayerText:INVALID_TEXT_DRAW;
-
-        hospitalInformation[i][hospitalTimer] = INVALID_TIMER;
-    }
+    for (new i = 0; i < MAX_PLAYERS; i++)
+        RestoreHospitalInformation(i, false);
     return 1;
 }
 
@@ -16,23 +12,23 @@ hook OnPlayerDisconnect(playerid, text[]) {
 }
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
-    if (newkeys & KEY_FIRE && hospitalInformation[playerid][inOperation])
+    if (newkeys & KEY_FIRE && hospitalInformation[playerid][hOInOperation])
         RestoreHospitalInformation(playerid, true);
     return 1;
 }
 
 hook OnPlayerText(playerid, text[]) {
-    if (hospitalInformation[playerid][inOperation]) {
+    if (hospitalInformation[playerid][hOInOperation]) {
         if (isequal(text, "1", true) || isequal(text, "2", true) || isequal(text, "3", true) || isequal(text, "5", true) || isequal(text, "6", true) || isequal(text, "7", true) || isequal(text, "8", true))
             ApplyAnimation(playerid, "INT_SHOP", "shop_pay", 3.0, false, false, false, false, SYNC_NONE);
 
         if (isequal(text, "1", true)) {
-            if (gettime() - hospitalInformation[playerid][waitingTime] < 15) {
+            if (gettime() - hospitalInformation[playerid][hOWaitingTime] < 15) {
                 va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes Esperar Para Volver A Curarte.");
                 return ~0;
             }
 
-            hospitalInformation[playerid][waitingTime] = gettime();
+            hospitalInformation[playerid][hOWaitingTime] = gettime();
 
             if (accountInformation[playerid][cashInHand] < 1000) {
                 va_SendClientMessage(playerid, -1, ""COLOR_RED"No tienes suficiente dinero en mano para curarte.");
@@ -45,12 +41,12 @@ hook OnPlayerText(playerid, text[]) {
             va_SendClientMessage(playerid, -1, ""COLOR_AQUAMARINE"Te Has Curado, Ahora Tu Vida Esta Llena.");
             return ~0;
         } else if (isequal(text, "2", true)) {
-            if (gettime() - hospitalInformation[playerid][waitingTime] < 15) {
+            if (gettime() - hospitalInformation[playerid][hOWaitingTime] < 15) {
                 va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes Esperar Para Volver A Curarte.");
                 return ~0;
             }
 
-            hospitalInformation[playerid][waitingTime] = gettime();
+            hospitalInformation[playerid][hOWaitingTime] = gettime();
 
             if (accountInformation[playerid][cashInHand] < 10000) {
                 va_SendClientMessage(playerid, -1, ""COLOR_RED"No tienes suficiente dinero en mano para curar tus enfermedades.");
@@ -110,8 +106,8 @@ hook OnPlayerText(playerid, text[]) {
 
             RestoreHospitalInformation(playerid, false);
 
-            if (!hospitalInformation[playerid][inSkinSelection])
-                hospitalInformation[playerid][inSkinSelection] = true;
+            if (!hospitalInformation[playerid][hOInSkinSelection])
+                hospitalInformation[playerid][hOInSkinSelection] = true;
 
             accountInformation[playerid][cashInHand] -= 25000;
 
@@ -213,23 +209,23 @@ hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
         if (checkpoint == checkPointsInformation[i][interactionZoneCheckPoint] && checkPointsInformation[i][type] == 4) {
             CreateHospitalTextDrawings(playerid);
 
-            if (!hospitalInformation[playerid][inOperation])
-                hospitalInformation[playerid][inOperation] = true;
+            if (!hospitalInformation[playerid][hOInOperation])
+                hospitalInformation[playerid][hOInOperation] = true;
 
-            if (hospitalInformation[playerid][interactionZoneXCoordinate] != checkPointsInformation[i][interactionZoneXCoordinate])
-                hospitalInformation[playerid][interactionZoneXCoordinate] = checkPointsInformation[i][interactionZoneXCoordinate];
+            if (hospitalInformation[playerid][hOInteractionZoneXCoordinate] != checkPointsInformation[i][interactionZoneXCoordinate])
+                hospitalInformation[playerid][hOInteractionZoneXCoordinate] = checkPointsInformation[i][interactionZoneXCoordinate];
 
-            if (hospitalInformation[playerid][interactionZoneYCoordinate] != checkPointsInformation[i][interactionZoneYCoordinate])
-                hospitalInformation[playerid][interactionZoneYCoordinate] = checkPointsInformation[i][interactionZoneYCoordinate];
+            if (hospitalInformation[playerid][hOInteractionZoneYCoordinate] != checkPointsInformation[i][interactionZoneYCoordinate])
+                hospitalInformation[playerid][hOInteractionZoneYCoordinate] = checkPointsInformation[i][interactionZoneYCoordinate];
 
-            if (hospitalInformation[playerid][interactionZoneZCoordinate] != checkPointsInformation[i][interactionZoneZCoordinate])
-                hospitalInformation[playerid][interactionZoneZCoordinate] = checkPointsInformation[i][interactionZoneZCoordinate];
+            if (hospitalInformation[playerid][hOInteractionZoneZCoordinate] != checkPointsInformation[i][interactionZoneZCoordinate])
+                hospitalInformation[playerid][hOInteractionZoneZCoordinate] = checkPointsInformation[i][interactionZoneZCoordinate];
 
-            if (hospitalInformation[playerid][interactionZoneAngle] != checkPointsInformation[i][interactionZoneAngle])
-                hospitalInformation[playerid][interactionZoneAngle] = checkPointsInformation[i][interactionZoneAngle];
+            if (hospitalInformation[playerid][hOInteractionZoneAngle] != checkPointsInformation[i][interactionZoneAngle])
+                hospitalInformation[playerid][hOInteractionZoneAngle] = checkPointsInformation[i][interactionZoneAngle];
 
-            if (hospitalInformation[playerid][hospitalTimer] == INVALID_TIMER)
-                hospitalInformation[playerid][hospitalTimer] = SetTimerEx("HospitalCheckPointOutput", 500, true, "i", playerid);
+            if (hospitalInformation[playerid][hOTExitFromTheCheckPoint] == INVALID_TIMER)
+                hospitalInformation[playerid][hOTExitFromTheCheckPoint] = SetTimerEx("HospitalCheckPointOutput", 500, true, "i", playerid);
             return -1;
         }
     }

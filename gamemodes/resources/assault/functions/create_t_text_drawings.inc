@@ -1,5 +1,7 @@
 forward CreateTTextDrawings(const playerid, const time[]);
 public CreateTTextDrawings(const playerid, const time[]) {
+    RestoreGlobalTextDrawings(playerid);
+
     new string[128];
     format(string, sizeof(string), "Mission_Time:_~g~%s", time);
 

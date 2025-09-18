@@ -48,7 +48,7 @@
 #include "resources\day\enumerations/dayInformation.inc"
 
 // Assistant enumerations
-#include "resources\assistant\enumerations/assistantInformation.inc"
+#include "resources\assistant\enumerations/assistant_information.inc"
 #include "resources\assistant\enumerations/rules_assistant_information.inc"
 
 // Check Points enumerations
@@ -58,6 +58,7 @@
 #include "resources\check_points\enumerations/hospital_information.inc"
 #include "resources\check_points\enumerations/lost_vehicle_information.inc"
 #include "resources\check_points\enumerations\lost_vehicle_player_information.inc"
+#include "resources\check_points\enumerations\pets_information.inc"
 
 // Violation enumerations
 #include "resources\violation\enumerations/violation_information.inc"
@@ -143,6 +144,10 @@
 #include "resources\check_points\variables/hospital_information.inc"
 #include "resources\check_points\variables/lost_vehicle_information.inc"
 #include "resources\check_points\variables/lost_vehicle_player_information.inc"
+
+// Check points variables - pets
+#include "resources\check_points\variables\pets/pets_information.inc"
+#include "resources\check_points\variables\pets/type_of_pets_names.inc"
 
 // Violation variables
 #include "resources\violation\variables/violation_information.inc"
@@ -252,12 +257,9 @@
 //
 
 #include "resources\preload_animations/implementation.inc"
-#include "resources\assign_player_name/implementation.inc"
-#include "resources\assign_player_color/implementation.inc"
 #include "resources\player_view/implementation.inc"
 #include "resources\message_when_connecting/implementation.inc"
 #include "resources\authenticator/implementation.inc"
-#include "resources\connectiong_notice/implementation.inc"
 
 #include "resources\administration/implementation.inc"
 
@@ -266,7 +268,6 @@
 #include "resources\player_appearance/implementation.inc"
 //
 
-#include "resources\desconnectiong_notice/implementation.inc"
 #include "resources\messages_when_spawning/implementation.inc"
 #include "resources\hud/implementation.inc"
 

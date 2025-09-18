@@ -1,17 +1,13 @@
 #include <YSI_Coding\y_hooks>
 
 hook OnGameModeInit() {
-    for (new i = 0; i < MAX_PLAYERS; i++) {
-        for (new e = 0; e < 8; e++)
-            drugDistributorsInformation[i][drugDistributorsTextDrawings][e] = PlayerText:INVALID_TEXT_DRAW;
-
-        drugDistributorsInformation[i][drugDistributorsTimer] = INVALID_TIMER;
-    }
+    for (new i = 0; i < MAX_PLAYERS; i++)
+        RestoreDrugDistributorsInfo(i);
     return 1;
 }
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
-    if (newkeys & KEY_FIRE && drugDistributorsInformation[playerid][inOperation])
+    if (newkeys & KEY_FIRE && drugDistributorsInformation[playerid][dDInOperation])
         RestoreDrugDistributorsInfo(playerid);
     return 1;
 }
@@ -22,7 +18,7 @@ hook OnPlayerDisconnect(playerid, text[]) {
 }
 
 hook OnPlayerText(playerid, text[]) {
-    if (drugDistributorsInformation[playerid][inOperation]) {
+    if (drugDistributorsInformation[playerid][dDInOperation]) {
         if (isequal(text, "1", true) || isequal(text, "2", true) || isequal(text, "3", true) || isequal(text, "4", true)  || isequal(text, "5", true) || isequal(text, "6", true) || isequal(text, "7", true))
             ApplyAnimation(playerid, "INT_SHOP", "shop_pay", 3.0, false, false, false, false, SYNC_NONE);
 
@@ -146,14 +142,10 @@ hook OnPlayerText(playerid, text[]) {
 hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
     for (new i = 0; i < numberOfCheckPointsCreated; i++) {
         if (checkpoint == checkPointsInformation[i][interactionZoneCheckPoint] && checkPointsInformation[i][type] == 3) {
-            CreateDrugDistributorsTD(playerid);
-
-            if (!drugDistributorsInformation[playerid][inOperation])
-                drugDistributorsInformation[playerid][inOperation] = true;
-
-            if (drugDistributorsInformation[playerid][drugDistributorsTimer] == INVALID_TIMER)
-                drugDistributorsInformation[playerid][drugDistributorsTimer] = SetTimerEx("DrugDistributorsCPOutput", 500, true, "i", playerid);
-            return ~0;
+            CreateDDTextDrawings(playerid);
+            CreateDDInOperation(playerid);
+            CreateDDTExitFromTheCheckPoint(playerid);
+            return -1;
         }
     }
     return 1;

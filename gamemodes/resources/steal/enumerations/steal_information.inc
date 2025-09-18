@@ -1,0 +1,4 @@
+enum stealInformationEnum {
+    sTTWaitingTime,
+    sTPreviouslyStolenPlayer
+};

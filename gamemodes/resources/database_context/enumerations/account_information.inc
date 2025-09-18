@@ -52,6 +52,8 @@ enum accountInformationEnum {
     bool:gonorrhea,
     bool:syphilis,
     condoms,
+    pet,
+    petName[7],
 
     bool:loggedIn,
     bool:exists,

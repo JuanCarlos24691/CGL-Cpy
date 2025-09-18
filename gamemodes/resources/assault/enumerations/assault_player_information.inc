@@ -1,7 +1,7 @@
 enum assaultPlayerInformationEnum {
-    bool:inAssault,
+    bool:aInAssault,
     bool:aAtTheCheckPoint,
-    bool:assaultCompleted,
+    bool:aAssaultCompleted,
     PlayerText:aTextDrawings[4],
     PlayerText:cTextDrawings[6],
     PlayerText:tTextDrawing,
