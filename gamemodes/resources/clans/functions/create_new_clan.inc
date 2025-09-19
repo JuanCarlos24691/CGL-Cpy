@@ -64,16 +64,16 @@ public AssignColorToNewClan(const playerid, const uniqueIdentifierOfTheNewClan, 
             return va_SendClientMessage(pid, -1, ""COLOR_RED"Se ha cancelado la creación del clan debido a que no seleccionaste un color válido.");
 
         for (new i = 0; i < numberOfClansCreated; i++)
-            if (clanInformation[i][argb] == clanColorInformation[listitem][argbColor] || isequal(clanInformation[i][hexadecimal], clanColorInformation[listitem][hexadecimalColor], true))
+            if (clanInformation[i][argb] == clanColorInformation[listitem][cCArgbColor] || isequal(clanInformation[i][hexadecimal], clanColorInformation[listitem][cCHexadecimalColor], true))
                 return va_SendClientMessage(pid, -1, ""COLOR_RED"Ya existe un clan con el color ingresado, por favor, vuelve a intentarlo.");
 
-        InsertNewClanInformation(playerid, uniqueIdentifierOfTheNewClan, nameOfTheNewClanBuffered, tagOfTheNewClanBuffered, clanColorInformation[listitem][argbColor], clanColorInformation[listitem][hexadecimalColor]);
+        InsertNewClanInformation(playerid, uniqueIdentifierOfTheNewClan, nameOfTheNewClanBuffered, tagOfTheNewClanBuffered, clanColorInformation[listitem][cCArgbColor], clanColorInformation[listitem][cCHexadecimalColor]);
     }
 
     new colorsName[512], colorName[512];
 
     for (new i = 0; i < MAX_CLANS_COLORS; i++) {
-        format(colorName, sizeof(colorName), "{%s}%s\n", clanColorInformation[i][hexadecimalColor], clanColorInformation[i][nameColor]);
+        format(colorName, sizeof(colorName), "{%s}%s\n", clanColorInformation[i][cCHexadecimalColor], clanColorInformation[i][cCNameColor]);
         strcat(colorsName, colorName);
     }
 

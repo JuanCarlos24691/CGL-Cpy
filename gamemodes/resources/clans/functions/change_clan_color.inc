@@ -15,11 +15,11 @@ public ChangeClanColor(const playerid) {
             return va_SendClientMessage(pid, -1, ""COLOR_RED"Cancelaste el cambio de color de tu clan.");
 
         for (new i = 0; i < numberOfClansCreated; i++)
-            if (clanInformation[i][argb] == clanColorInformation[listitem][argbColor] || isequal(clanColorInformation[i][hexadecimalColor], clanColorInformation[listitem][hexadecimalColor], true))
+            if (clanInformation[i][argb] == clanColorInformation[listitem][cCArgbColor] || isequal(clanColorInformation[i][cCHexadecimalColor], clanColorInformation[listitem][cCHexadecimalColor], true))
                 return va_SendClientMessage(pid, -1, ""COLOR_RED"El color escogido no está disponible, por favor, vuelve a intentarlo.");
 
-        clanInformation[clanIdentifierSearched][argb] = clanColorInformation[listitem][argbColor];
-        strcpy(clanInformation[clanIdentifierSearched][hexadecimal], clanColorInformation[listitem][hexadecimalColor]);
+        clanInformation[clanIdentifierSearched][argb] = clanColorInformation[listitem][cCArgbColor];
+        strcpy(clanInformation[clanIdentifierSearched][hexadecimal], clanColorInformation[listitem][cCHexadecimalColor]);
 
         foreach (new i : Player)
             if (accountInformation[i][assignedClan] == clanIdentifierSearched)
@@ -31,7 +31,7 @@ public ChangeClanColor(const playerid) {
     new colorsName[512], colorName[512];
 
     for (new i = 0; i < MAX_CLANS_COLORS; i++) {
-        format(colorName, sizeof(colorsName), "{%s}%s\n", clanColorInformation[i][hexadecimalColor], clanColorInformation[i][nameColor]);
+        format(colorName, sizeof(colorsName), "{%s}%s\n", clanColorInformation[i][cCHexadecimalColor], clanColorInformation[i][cCNameColor]);
         strcat(colorsName, colorName);
     }
 

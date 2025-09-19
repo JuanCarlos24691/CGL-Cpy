@@ -1,4 +1,4 @@
 enum clanInvitationInfoEnum {
-    clanIdentifier,
-    invitationExpirationTimer
+    cIClanIdentifier,
+    cITInvitationExpiration
 };

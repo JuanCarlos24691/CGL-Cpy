@@ -15,5 +15,6 @@ public RestoreGlobalTextDrawings(const playerid) {
     RestoreHOTextDrawings(playerid);
     RestoreINTextDrawings(playerid);
     RestoreMBTextDrawings(playerid);
+    RestoreCATextDrawings(playerid);
     return 1;
 }

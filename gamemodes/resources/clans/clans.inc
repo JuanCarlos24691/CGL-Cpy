@@ -1,9 +1,10 @@
 #include <YSI_Coding\y_hooks>
 
 hook OnGameModeInit() {
-    for (new i = 0; i < MAX_PLAYERS; i++)
-        for (new e = 0; e < 12; e++)
-            clanAssistantInformation[i][textDrawings][e] = PlayerText:INVALID_TEXT_DRAW;
+    for (new i = 0; i < MAX_PLAYERS; i++) {
+        RestoreClanAssistantInfo(i);
+        RestoreClanInvitationInfo(i);
+    }
 
     new const listOfClanColorNames[MAX_CLANS_COLORS][] = {
         "Verde",          // 0
@@ -62,16 +63,24 @@ hook OnGameModeInit() {
         0xE35336FF  // Ladrillo
     };
 
+    RestoreClanColorInformation();
+
     for (new i = 0; i < MAX_CLANS_COLORS; i++) {
-        strcpy(clanColorInformation[i][hexadecimalColor], listOfClanhexadecimalColors[i]);
-        clanColorInformation[i][argbColor] = listOfClanArgbColors[i];
-        strcpy(clanColorInformation[i][nameColor], listOfClanColorNames[i]);
+        CreateCCHexadecimalColor(i, listOfClanhexadecimalColors[i]);
+        CreateCCArgbColor(i, listOfClanArgbColors[i]);
+        CreateCCNameColor(i, listOfClanColorNames[i]);
     }
+    return 1;
+}
+
+hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
+    if (newkeys & KEY_FIRE && clanAssistantInformation[playerid][cAInOperation])
+        RestoreClanAssistantInfo(playerid);
     return 1;
 }
 
 hook OnPlayerDisconnect(playerid, text[]) {
     RestoreClanAssistantInfo(playerid);
-    RestoreClanAssistantInfo(playerid);
+    RestoreClanInvitationInfo(playerid);
     return 1;
 }

@@ -5,8 +5,10 @@ public RestoreBankVehicleRobberyInfo(const bool:skipVehicleRestoration) {
         bankVehicleRobberyInformation[bVVehicle] = INVALID_VEHICLE_ID;
     }
 
-    if (bankVehicleRobberyInformation[bVLabel3D] != INVALID_3DTEXT_ID)
+    if (bankVehicleRobberyInformation[bVLabel3D] != INVALID_3DTEXT_ID) {
+        DestroyDynamic3DTextLabel(bankVehicleRobberyInformation[bVLabel3D]);
         bankVehicleRobberyInformation[bVLabel3D] = INVALID_3DTEXT_ID;
+    }
 
     if (bankVehicleRobberyInformation[bVPickup] != INVALID_PICKUP) {
         DestroyDynamicPickup(bankVehicleRobberyInformation[bVPickup]);

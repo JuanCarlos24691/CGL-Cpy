@@ -20,11 +20,14 @@ public Steal(const playerid, const targetPlayerId) {
     if (accountInformation[targetPlayerId][cashInHand] == 0)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"El jugador no tiene dinero que puedas robarlo.");
 
-    if (accountInformation[playerid][pet] != 0 && accountInformation[targetPlayerId][pet] != 0) {
+    if (accountInformation[targetPlayerId][pet] != 0) {
         va_SendClientMessageToAll(-1, "%s, El %s De %s (%d) Salio Huyendo Cuando Vio A %s %s De %s (%d)", accountInformation[targetPlayerId][petName], typeOfPetsNames[accountInformation[targetPlayerId][pet]], accountInformation[targetPlayerId][name], targetPlayerId, typeOfPetsNames[accountInformation[playerid][pet]], accountInformation[playerid][petName], accountInformation[playerid][petName], playerid);
 
         if (accountInformation[targetPlayerId][pet] != 0)
             accountInformation[targetPlayerId][pet] = 0;
+
+        if (!isequal(accountInformation[targetPlayerId][petName], "Unnamed", true))
+            strcpy(accountInformation[targetPlayerId][petName], "Unnamed");
 
         va_SendClientMessage(playerid, -1, ""COLOR_AQUAMARINE2"%s (%d) Se Ha Dado Cuenta De Que Trataste De Robarle. Intento fallido!", accountInformation[targetPlayerId][name], targetPlayerId);
 

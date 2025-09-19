@@ -1,4 +1,4 @@
 enum clanAssistantInformationEnum {
-    PlayerText:textDrawings[12],
-    inOperation
+    PlayerText:cATextDrawings[12],
+    bool:cAInOperation
 };

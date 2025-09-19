@@ -3,7 +3,7 @@ public JoinAPlayerToAClan(const playerid, const clanIdentifierSearched) {
     if (accountInformation[playerid][assignedClan] != NO_TEAM)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"No puedes unirte a un clan sí, ya perteneces a uno.");
 
-    if (clanInvitationInformation[playerid][clanIdentifier] == NO_TEAM)
+    if (clanInvitationInformation[playerid][cIClanIdentifier] == NO_TEAM)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"Actualmente no tienes ninguna invitación para unirte a un clan.");
 
     accountInformation[playerid][assignedClan] = clanIdentifierSearched;

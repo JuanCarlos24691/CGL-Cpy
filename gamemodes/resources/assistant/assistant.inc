@@ -6,7 +6,7 @@ hook OnGameModeInit() {
     return 1;
 }
 
-hook OnPlayerDisconnect(playerid, text[]) {
+hook OnPlayerDisconnect(playerid, text[]) { 
     RestoreAssistantInformation(playerid);
     return 1;
 }
@@ -14,7 +14,7 @@ hook OnPlayerDisconnect(playerid, text[]) {
 hook OnPlayerText(playerid, text[]) {
     if (assistantInformation[playerid][aSInOperation]) {
         if (isequal(text, "1", true)) {
-            CreateClanWizardTextDrawings(playerid);
+            CreateCATextDrawings(playerid);
             return ~0;
         }
     }
