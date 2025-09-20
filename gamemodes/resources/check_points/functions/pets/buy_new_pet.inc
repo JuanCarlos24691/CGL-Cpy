@@ -14,7 +14,7 @@ public BuyNewPet(const playerid, const petType) {
         case 9: petPrice = 180000;
         case 10: petPrice = 200000;
         case 11: petPrice = 300000;
-        case 12: petPrice = 310000; 
+        case 12: petPrice = 310000;
         case 13: petPrice = 320000;
         case 14: petPrice = 330000;
         case 15: petPrice = 350000;
@@ -27,6 +27,8 @@ public BuyNewPet(const playerid, const petType) {
 
     if (accountInformation[playerid][cashInHand] < petPrice)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"Necesitas por lo menos $%d para poder comprar un %s.", petPrice, typeOfPetsNames[accountInformation[playerid][pet]]);
+
+    ApplyAnimation(playerid, "INT_SHOP", "shop_pay", 3.0, false, false, false, false, SYNC_NONE);
 
     inline const IDialog_ShowCallback(pid, dialogid, response, listitem, string:inputtext[]) {
 	    #pragma unused dialogid, listitem
@@ -42,11 +44,9 @@ public BuyNewPet(const playerid, const petType) {
         accountInformation[playerid][pet] = petType;
         strcpy(accountInformation[playerid][petName], inputtext);
 
-        va_SendClientMessage(pid, -1, ""COLOR_DARK_GREEN"Compraste Un(a) %s Y Le Puciste %s Por $%d", typeOfPetsNames[accountInformation[playerid][pet]], inputtext, petPrice);
+        va_SendClientMessage(pid, -1, ""COLOR_AQUAMARINE_GREEN"Compraste Un(a) %s Y Le Puciste %s Por $%d", typeOfPetsNames[accountInformation[playerid][pet]], inputtext, petPrice);
     }
 
-    new stirng[42];
-    format(stirng, sizeof(stirng), "Ingresa el nombre del %s que deseas comprar", typeOfPetsNames[accountInformation[playerid][pet]]);
-    Dialog_ShowCallback(playerid, using inline IDialog_ShowCallback, DIALOG_STYLE_INPUT, "Tienda de Mascotas", stirng, "Comprar", "Cancelar");
+    Dialog_ShowCallback(playerid, using inline IDialog_ShowCallback, DIALOG_STYLE_INPUT, "Tienda de Mascotas", "Ingresa el nombre de la mascota que deseas comprar", "Comprar", "Cancelar");
     return 1;
 }

@@ -16,5 +16,6 @@ public RestoreGlobalTextDrawings(const playerid) {
     RestoreINTextDrawings(playerid);
     RestoreMBTextDrawings(playerid);
     RestoreCATextDrawings(playerid);
+    DestroyAdminAssistantTextDraw(playerid);
     return 1;
 }

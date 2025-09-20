@@ -7,6 +7,6 @@ YCMD:abandonarmascota(playerid, params[], help) {
     if (!isequal(accountInformation[playerid][petName], "Unnamed", true))
         strcpy(accountInformation[playerid][petName], "Unnamed");
 
-    va_SendClientMessage(playerid, -1, ""COLOR_DARK_GREEN"Has abandonado a tu mascota.");
+    va_SendClientMessage(playerid, -1, ""COLOR_DARK_GREEN"Dejaste Ir Tu Mascota.");
     return 1;
 }

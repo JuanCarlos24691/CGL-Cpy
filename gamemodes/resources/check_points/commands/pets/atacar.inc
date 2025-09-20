@@ -1,8 +1,9 @@
 YCMD:atacar(playerid, params[], help) {
+    if (accountInformation[playerid][pet] == 0)
+        return va_SendClientMessage(playerid, -1, ""COLOR_RED"No Puedes Atacar Al Jugador Si No Tienes Una Mascota.");
+
     if (petsInformation[playerid][pSTWaitingTime] != INVALID_TIMER)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes esperar para poder atacar de nuevo.");
-
-    CreatePSTWaitingTime(playerid);
 
     new damage;
 
@@ -41,15 +42,17 @@ YCMD:atacar(playerid, params[], help) {
         new Float:playerXCoordinate, Float:playerYCoordinate, Float:playerZCoordinate;
         GetPlayerPos(targetPlayerId, playerXCoordinate, playerYCoordinate, playerZCoordinate);
 
-        if (IsPlayerInRangeOfPoint(playerid, 1.3, playerXCoordinate, playerYCoordinate, playerZCoordinate))
+        if (IsPlayerInRangeOfPoint(playerid, 1.4, playerXCoordinate, playerYCoordinate, playerZCoordinate))
             return va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes estar cerca del jugador para atacarlo.");
+
+        CreatePSTWaitingTime(playerid);
 
         new Float:lifeOfTheAttackedPlayer;
         GetPlayerHealth(targetPlayerId, lifeOfTheAttackedPlayer);
         lifeOfTheAttackedPlayer -= damage;
 
-        SetPlayerHealth(playerid, damage);
-        va_SendClientMessage(playerid, -1, ""COLOR_DARK_GREEN"%s, %s de %s (%d) atacó a %s (%d).", accountInformation[playerid][petName], typeOfPetsNames[accountInformation[playerid][pet]], accountInformation[playerid][name], playerid, accountInformation[targetPlayerId][name], targetPlayerId);
+        SetPlayerHealth(targetPlayerId, lifeOfTheAttackedPlayer);
+        va_SendClientMessage(playerid, -1, "El %s Mascota De %s (%d) (%s) Ataco gravemente a %s(%d).", typeOfPetsNames[accountInformation[playerid][pet]], accountInformation[playerid][name], playerid, accountInformation[playerid][petName], accountInformation[targetPlayerId][name], targetPlayerId);
         return 1;
     } else {
         foreach (new i : Player) {
@@ -57,12 +60,14 @@ YCMD:atacar(playerid, params[], help) {
             GetPlayerPos(i, playerXCoordinate, playerYCoordinate, playerZCoordinate);
 
             if (IsPlayerInRangeOfPoint(playerid, 1.3, playerXCoordinate, playerYCoordinate, playerZCoordinate) && playerid != i) {
+                CreatePSTWaitingTime(playerid);
+
                 new Float:lifeOfTheAttackedPlayer;
                 GetPlayerHealth(i, lifeOfTheAttackedPlayer);
                 lifeOfTheAttackedPlayer -= damage;
 
-                SetPlayerHealth(playerid, damage);
-                va_SendClientMessage(playerid, -1, ""COLOR_DARK_GREEN"%s, %s de %s (%d) atacó a %s (%d).", accountInformation[playerid][petName], typeOfPetsNames[accountInformation[playerid][pet]], accountInformation[playerid][name], playerid, accountInformation[i][name], i);
+                SetPlayerHealth(i, lifeOfTheAttackedPlayer);
+                va_SendClientMessage(playerid, -1, "El %s Mascota De %s (%d) (%s) Ataco gravemente a %s(%d).", typeOfPetsNames[accountInformation[playerid][pet]], accountInformation[playerid][name], playerid, accountInformation[playerid][petName], accountInformation[i][name], i);
                 return 1;
             }
         }

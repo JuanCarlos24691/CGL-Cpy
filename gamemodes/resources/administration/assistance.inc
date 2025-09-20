@@ -35,6 +35,8 @@ YCMD:acmds(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 1)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 1 para poder usar este comando.");
 
+    RestoreGlobalTextDrawings(playerid);
+
     if (accountInformation[playerid][inGame]) {
         for (new i = 0; i < 8; i++) {
             switch (i) {

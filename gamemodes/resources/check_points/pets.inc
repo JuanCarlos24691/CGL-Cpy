@@ -22,7 +22,6 @@ hook OnPlayerText(playerid, text[]) {
             }
 
             BuyNewPet(playerid, strval(text));
-            ApplyAnimation(playerid, "INT_SHOP", "shop_pay", 3.0, false, false, false, false, SYNC_NONE);
             return ~0;
         }
     }
