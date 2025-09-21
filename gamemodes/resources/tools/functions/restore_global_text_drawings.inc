@@ -1,21 +1,20 @@
 forward RestoreGlobalTextDrawings(const playerid);
 public RestoreGlobalTextDrawings(const playerid) {
-    RestoreFirstAnimAssistantTd(playerid);
-    RestoreSecondAnimAssistantTd(playerid);
-    RestoreThirdAnimAssistantTd(playerid);
+    RestoreAnimationAssistantInfo(playerid);
     RestoreATextDrawings(playerid);
     RestoreCompletedATextDrawings(playerid);
-    RestoreASTextDrawings(playerid);
-    RestoreRATextDrawings(playerid);
-    RestoreARTextDrawings(playerid);
-    RestoreBATextDrawings(playerid);
-    RestoreDDTextDrawings(playerid);
-    RestoreLVPlayerTextDrawings(playerid);
-    RestorePSTextDrawings(playerid);
-    RestoreHOTextDrawings(playerid);
-    RestoreINTextDrawings(playerid);
-    RestoreMBTextDrawings(playerid);
-    RestoreCATextDrawings(playerid);
+    RestoreAssistantInformation(playerid);
+    RestoreRulesAssistantInfo(playerid);
+    RestoreInventoryInformation(playerid);
+    RestoreMoneyBangPlayerInfo(playerid);
+    RestoreClanAssistantInfo(playerid);
+    RestoreArmoryInformation(playerid);
+    RestoreBankInformation(playerid);
+    RestoreDrugDistributorsInfo(playerid);
+    RestoreLVPlayerInformation(playerid);
+    RestorePetsInformation(playerid);
+    RestoreHospitalInformation(playerid, false);
+
     DestroyAdminAssistantTextDraw(playerid);
     return 1;
 }

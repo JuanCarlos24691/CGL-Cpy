@@ -1,13 +1,16 @@
-forward RestoreHospitalInformation(const playerid);
-public RestoreHospitalInformation(const playerid) {
+forward RestoreHospitalInformation(const playerid, const bool:critic);
+public RestoreHospitalInformation(const playerid, const bool:critic) {
     RestoreHOInOperation(playerid);
-    RestoreHOInSkinSelection(playerid);
-    RestoreHOInteZoneXCoordinate(playerid);
-    RestoreHOInteZoneYCoordinate(playerid);
-    RestoreHOInteZoneZCoordinate(playerid);
-    RestoreHOInteZoneAngleCoor(playerid);
     RestoreHOTExitFromTheVheckPoint(playerid);
     RestoreHOTWaitingTime(playerid);
     RestoreHOTextDrawings(playerid);
+
+    if (critic) {
+        RestoreHOInSkinSelection(playerid);
+        RestoreHOInteZoneXCoordinate(playerid);
+        RestoreHOInteZoneYCoordinate(playerid);
+        RestoreHOInteZoneZCoordinate(playerid);
+        RestoreHOInteZoneAngleCoor(playerid);
+    }
     return 1;
 }

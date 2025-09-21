@@ -2,18 +2,18 @@
 
 hook OnGameModeInit() {
     for (new i = 0; i < MAX_PLAYERS; i++)
-        RestoreHospitalInformation(i);
+        RestoreHospitalInformation(i, true);
     return 1;
 }
 
 hook OnPlayerDisconnect(playerid, text[]) {
-    RestoreHospitalInformation(playerid);
+    RestoreHospitalInformation(playerid, true);
     return 1; 
 }
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
     if (newkeys & KEY_FIRE && hospitalInformation[playerid][hOInOperation])
-        RestoreHospitalInformation(playerid);
+        RestoreHospitalInformation(playerid, true);
     return 1;
 }
 

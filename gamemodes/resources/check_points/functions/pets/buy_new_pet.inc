@@ -1,5 +1,8 @@
-forward BuyNewPet(const playerid, const petType);
-public BuyNewPet(const playerid, const petType) {
+forward BuyNewPet(const playerid, const nameOfPet[], const petType);
+public BuyNewPet(const playerid, const nameOfPet[], const petType) {
+    if (strlen(nameOfPet) < 2 || strlen(nameOfPet) > 6)
+        return va_SendClientMessage(playerid, -1, ""COLOR_RED"El nombre del %s debe tener un rango de 2 a 6 caracteres.", typeOfPetsNames[petType]);
+
     new petPrice;
 
     switch (petType) {
@@ -26,27 +29,16 @@ public BuyNewPet(const playerid, const petType) {
     }
 
     if (accountInformation[playerid][cashInHand] < petPrice)
-        return va_SendClientMessage(playerid, -1, ""COLOR_RED"Necesitas por lo menos $%d para poder comprar un %s.", petPrice, typeOfPetsNames[accountInformation[playerid][pet]]);
+        return va_SendClientMessage(playerid, -1, ""COLOR_RED"Necesitas por lo menos $%d para poder comprar un %s.", petPrice, typeOfPetsNames[petType]);
+
+    RestorePetsInformation(playerid);
+
+    accountInformation[playerid][cashInHand] -= petPrice;
+
+    accountInformation[playerid][pet] = petType;
+    strcpy(accountInformation[playerid][petName], nameOfPet);
 
     ApplyAnimation(playerid, "INT_SHOP", "shop_pay", 3.0, false, false, false, false, SYNC_NONE);
-
-    inline const IDialog_ShowCallback(pid, dialogid, response, listitem, string:inputtext[]) {
-	    #pragma unused dialogid, listitem
-
-        if (!response)
-            return va_SendClientMessage(pid, -1, ""COLOR_RED"Has cancelado la compra del %s.", typeOfPetsNames[accountInformation[playerid][pet]]);
-
-        if (strlen(inputtext) < 2 || strlen(inputtext) > 6)
-            return va_SendClientMessage(pid, -1, ""COLOR_RED"El nombre del %s debe tener un rango de 2 a 6 caracteres.", typeOfPetsNames[accountInformation[playerid][pet]]);
-
-        accountInformation[playerid][cashInHand] -= petPrice;
-
-        accountInformation[playerid][pet] = petType;
-        strcpy(accountInformation[playerid][petName], inputtext);
-
-        va_SendClientMessage(pid, -1, ""COLOR_AQUAMARINE_GREEN"Compraste Un(a) %s Y Le Puciste %s Por $%d", typeOfPetsNames[accountInformation[playerid][pet]], inputtext, petPrice);
-    }
-
-    Dialog_ShowCallback(playerid, using inline IDialog_ShowCallback, DIALOG_STYLE_INPUT, "Tienda de Mascotas", "Ingresa el nombre de la mascota que deseas comprar", "Comprar", "Cancelar");
+    va_SendClientMessage(playerid, -1, ""COLOR_AQUAMARINE_GREEN"Compraste Un(a) %s Y Le Puciste %s Por $%d", typeOfPetsNames[petType], nameOfPet, petPrice);
     return 1;
 }

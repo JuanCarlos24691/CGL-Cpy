@@ -1,6 +1,9 @@
 enum petsInformationEnum {
-    bool:pSInOperation,
+    bool:pSInOperationBuy,
+    bool:pSInOperationPlaceName,
     pSTExitFromTheCheckPoint,
     pSTWaitingTime,
-    PlayerText:pSTextDrawings[42]
+    pSTypeOfPetSelected,
+    PlayerText:pSTDBuy[42],
+    PlayerText:pSTDPlaceName[4],
 };

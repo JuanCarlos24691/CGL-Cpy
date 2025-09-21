@@ -57,7 +57,6 @@
 #include "resources\check_points\functions\hospital\restore_h_o_text_drawings.inc"
 #include "resources\check_points\functions\hospital\restore_hospital_information.inc"
 
-
 // - Drug Distributors
 #include "resources\check_points\functions\drug_distributors\create_d_d_in_operation.inc"
 #include "resources\check_points\functions\drug_distributors\create_d_d_t_exit_from_the_check_point.inc"
@@ -70,16 +69,22 @@
 
 // - Pets
 #include "resources\check_points\functions\pets\buy_new_pet.inc"
-#include "resources\check_points\functions\pets\create_p_s_in_operation.inc"
-#include "resources\check_points\functions\pets\restore_p_s_in_operation.inc"
+#include "resources\check_points\functions\pets\create_p_s_in_operation_buy.inc.inc"
+#include "resources\check_points\functions\pets\restore_p_s_in_operation_buy.inc.inc"
 #include "resources\check_points\functions\pets\p_s_t_exit_from_the_check_point.inc"
 #include "resources\check_points\functions\pets\create_p_s_t_exit_from_the_check_point.inc"
 #include "resources\check_points\functions\pets\create_p_s_t_waiting_time.inc"
-#include "resources\check_points\functions\pets\create_p_s_text_drawings.inc"
+#include "resources\check_points\functions\pets\create_p_s_type_of_pet_selected.inc"
+#include "resources\check_points\functions\pets\create_p_s_in_operation_place_name.inc"
+#include "resources\check_points\functions\pets\create_p_s_t_d_place_name.inc"
+#include "resources\check_points\functions\pets\create_p_s_td_buy.inc"
 #include "resources\check_points\functions\pets\restore_p_s_t_exit_from_the_check_point.inc"
 #include "resources\check_points\functions\pets\restore_pets_information.inc"
 #include "resources\check_points\functions\pets\restore_p_s_t_waiting_time.inc"
-#include "resources\check_points\functions\pets\restore_p_s_text_drawings.inc"
+#include "resources\check_points\functions\pets\restore_p_s_type_of_pet_selected.inc"
+#include "resources\check_points\functions\pets\restore_p_s_td_buy.inc"
+#include "resources\check_points\functions\pets\restore_p_s_t_d_place_name.inc"
+#include "resources\check_points\functions\pets/restore_p_s_in_operation_place_name.inc"
 
 #include "resources\check_points/functions/create_check_point_dynamics.inc"
 #include "resources\check_points\functions/create_check_point.inc"

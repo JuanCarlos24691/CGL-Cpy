@@ -10,7 +10,7 @@ public PSTUpdate3DLabel(const playerid) {
     }
 
     // Crear cadena con formato MM:SS
-    new minutesAndSeconds[6]; // "00:00" + terminador
+    new minutesAndSeconds[32]; // "00:00" + terminador
     format(minutesAndSeconds, sizeof(minutesAndSeconds), "Pausado %02d:%02d", playerPausedInformation[playerid][pSMinutes], playerPausedInformation[playerid][pSSeconds]);
 
     UpdatePS3DLabel(playerid, minutesAndSeconds);
