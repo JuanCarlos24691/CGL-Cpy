@@ -1,0 +1,44 @@
+####################################################################################################
+
+new PlayerText: Text_Player[MAX_PLAYERS][4];
+
+Text_Player[playerid][0] = CreatePlayerTextDraw(playerid, 3.000, 112.000, "LD_SPAC:black");
+PlayerTextDrawTextSize(playerid, Text_Player[playerid][0], 260.000, 82.000);
+PlayerTextDrawAlignment(playerid, Text_Player[playerid][0], TEXT_DRAW_ALIGN_LEFT);
+PlayerTextDrawColour(playerid, Text_Player[playerid][0], -106);
+PlayerTextDrawSetShadow(playerid, Text_Player[playerid][0], 0);
+PlayerTextDrawSetOutline(playerid, Text_Player[playerid][0], 0);
+PlayerTextDrawBackgroundColour(playerid, Text_Player[playerid][0], 255);
+PlayerTextDrawFont(playerid, Text_Player[playerid][0], TEXT_DRAW_FONT_SPRITE_DRAW);
+PlayerTextDrawSetProportional(playerid, Text_Player[playerid][0], true);
+
+Text_Player[playerid][1] = CreatePlayerTextDraw(playerid, 95.000, 123.000, "~b~Mascota");
+PlayerTextDrawLetterSize(playerid, Text_Player[playerid][1], 0.469, 1.299);
+PlayerTextDrawAlignment(playerid, Text_Player[playerid][1], TEXT_DRAW_ALIGN_LEFT);
+PlayerTextDrawColour(playerid, Text_Player[playerid][1], -1);
+PlayerTextDrawSetShadow(playerid, Text_Player[playerid][1], 1);
+PlayerTextDrawSetOutline(playerid, Text_Player[playerid][1], 1);
+PlayerTextDrawBackgroundColour(playerid, Text_Player[playerid][1], 150);
+PlayerTextDrawFont(playerid, Text_Player[playerid][1], TEXT_DRAW_FONT_3);
+PlayerTextDrawSetProportional(playerid, Text_Player[playerid][1], true);
+
+Text_Player[playerid][2] = CreatePlayerTextDraw(playerid, 89.000, 146.000, "~p~Comprando_Mascota");
+PlayerTextDrawLetterSize(playerid, Text_Player[playerid][2], 0.250, 0.999);
+PlayerTextDrawAlignment(playerid, Text_Player[playerid][2], TEXT_DRAW_ALIGN_LEFT);
+PlayerTextDrawColour(playerid, Text_Player[playerid][2], -1);
+PlayerTextDrawSetShadow(playerid, Text_Player[playerid][2], 1);
+PlayerTextDrawSetOutline(playerid, Text_Player[playerid][2], 1);
+PlayerTextDrawBackgroundColour(playerid, Text_Player[playerid][2], 150);
+PlayerTextDrawFont(playerid, Text_Player[playerid][2], TEXT_DRAW_FONT_1);
+PlayerTextDrawSetProportional(playerid, Text_Player[playerid][2], true);
+
+Text_Player[playerid][3] = CreatePlayerTextDraw(playerid, 33.000, 163.000, "Presiona_~y~T_~w~y_escribe_un_nombre_a_tu_mascota.");
+PlayerTextDrawLetterSize(playerid, Text_Player[playerid][3], 0.240, 0.999);
+PlayerTextDrawAlignment(playerid, Text_Player[playerid][3], TEXT_DRAW_ALIGN_LEFT);
+PlayerTextDrawColour(playerid, Text_Player[playerid][3], -1);
+PlayerTextDrawSetShadow(playerid, Text_Player[playerid][3], 1);
+PlayerTextDrawSetOutline(playerid, Text_Player[playerid][3], 1);
+PlayerTextDrawBackgroundColour(playerid, Text_Player[playerid][3], 150);
+PlayerTextDrawFont(playerid, Text_Player[playerid][3], TEXT_DRAW_FONT_1);
+PlayerTextDrawSetProportional(playerid, Text_Player[playerid][3], true);
+

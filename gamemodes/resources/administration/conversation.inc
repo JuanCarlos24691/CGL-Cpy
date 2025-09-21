@@ -7,7 +7,7 @@ hook OnPlayerText(playerid, text[]) {
             format(string, sizeof(string), ""COLOR_SINTAXYS"(Chat Administrativo) %s (%i) Díce: "COLOR_WHITE"%s", accountInformation[playerid][name], playerid, text[1]);
 
             foreach (new i : Player)
-                if (accountInformation[playerid][administrativeLevel] >= 1 && accountInformation[playerid][administrativeLevel] <= 5)
+                if (accountInformation[i][administrativeLevel] >= 1 && accountInformation[i][administrativeLevel] <= 5)
                     va_SendClientMessage(i, -1, string);
 
             return ~0;

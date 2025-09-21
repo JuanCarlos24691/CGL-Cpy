@@ -123,6 +123,9 @@
 // Steal enumerations
 #include "resources\steal\enumerations\steal_information.inc"
 
+// Player paused enumerations
+#include "resources\player_paused\enumerations\player_paused_information.inc"
+
 // Database variables
 #include "resources\database_context\variables/database_connection.inc"
 #include "resources\database_context\variables/ban_information.inc"
@@ -243,6 +246,9 @@
 // Steal variables
 #include "resources\steal\variables/steal_information.inc"
 
+// Player paused variables
+#include "resources\player_paused\variables/player_paused_information.inc"
+
 // Pendiente por reorganizar
 #include "resources\tools/implementation.inc"
 
@@ -272,6 +278,7 @@
 #include "resources\administration/implementation.inc"
 
 // Mantener este flujo para que las coordenadas de las ciudades esten disponibles player_appearance
+#include "resources\player_paused/implementation.inc" // Mantener por encima de cities para que pueda detectar si el jugador está en pausa o no
 #include "resources\cities/implementation.inc"
 #include "resources\player_appearance/implementation.inc"
 //
@@ -337,6 +344,14 @@ YCMD:equipo(playerid, params[], help) {
         return va_SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /equipo <ID del jugador>");
 
     va_SendClientMessage(playerid, -1, "Equipo del jugador: %d", GetPlayerTeam(destinationPlayerId));
+    return 1;
+}
+
+YCMD:ircarcel(playerid, params[], help) {
+    SetPlayerInterior(playerid, 3);
+    SetPlayerPos(playerid, 197.6661, 174.8179, 1003.0234);
+    SetPlayerFacingAngle(playerid, 355.540374);
+    SetCameraBehindPlayer(playerid);
     return 1;
 }
 

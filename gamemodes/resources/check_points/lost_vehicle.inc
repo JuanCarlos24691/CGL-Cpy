@@ -29,7 +29,7 @@ hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
     if (newkeys & KEY_FIRE)
-        RestoreLVPlayerTextDrawings(playerid);
+        RestoreLVPlayerInformation(playerid);
     return 1;
 }
 

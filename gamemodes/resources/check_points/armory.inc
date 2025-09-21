@@ -13,7 +13,7 @@ hook OnPlayerDisconnect(playerid, text[]) {
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
     if (newkeys & KEY_FIRE && armoryInformation[playerid][aRInOperation])
-        RestoreARTextDrawings(playerid);
+        RestoreArmoryInformation(playerid);
     return 1;
 }
 

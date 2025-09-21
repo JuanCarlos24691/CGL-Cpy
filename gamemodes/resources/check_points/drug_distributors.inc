@@ -13,7 +13,7 @@ hook OnPlayerDisconnect(playerid, text[]) {
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
     if (newkeys & KEY_FIRE && drugDistributorsInformation[playerid][dDInOperation])
-        RestoreDDTextDrawings(playerid);
+        RestoreDrugDistributorsInfo(playerid);
     return 1;
 }
 

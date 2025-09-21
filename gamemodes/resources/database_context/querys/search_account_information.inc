@@ -9,6 +9,7 @@ public SearchAccountInformation(const playerid, const nameOfTheAccountToBeSearch
             cache_get_value_name(0, "player_name", accountInformation[playerid][name]);
             cache_get_value_name(0, "password", accountInformation[playerid][password]);
             cache_get_value_name_int(0, "skin", accountInformation[playerid][skin]);
+            cache_get_value_name_int(0, "administrative_level", accountInformation[playerid][administrativeLevel]);
             cache_get_value_name(0, "ban_time", accountInformation[playerid][banTime]);
             cache_get_value_name(0, "ban_reason", accountInformation[playerid][banReason]);
             cache_get_value_name(0, "ban_date", accountInformation[playerid][banDate]);
@@ -21,7 +22,7 @@ public SearchAccountInformation(const playerid, const nameOfTheAccountToBeSearch
         Indirect_Release(callBack);
     }
 
-    if (MySQL_TQueryInline(databaseConnection, using inline IMySQL_TQueryInline, "SELECT UUID, player_name, password, skin, ban_time, ban_reason, ban_date FROM accounts WHERE player_name = '%e' LIMIT 1", nameOfTheAccountToBeSearched))
+    if (MySQL_TQueryInline(databaseConnection, using inline IMySQL_TQueryInline, "SELECT UUID, player_name, password, skin, administrative_level, ban_time, ban_reason, ban_date FROM accounts WHERE player_name = '%e' LIMIT 1", nameOfTheAccountToBeSearched))
         Indirect_Claim(callBack);
     return 1;
 }

@@ -56,6 +56,5 @@ enum accountInformationEnum {
     petName[7],
 
     bool:loggedIn,
-    bool:exists,
-    lastUpdate
+    bool:exists
 };

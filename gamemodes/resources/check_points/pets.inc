@@ -3,8 +3,6 @@
 hook OnGameModeInit() {
     for (new i = 0; i < MAX_PLAYERS; i++)
         RestorePetsInformation(i);
-
-    // SetTimerEx("ChargeFeesForPets", 1000, true);
     return 1;
 }
 
@@ -30,7 +28,7 @@ hook OnPlayerText(playerid, text[]) {
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
     if (newkeys & KEY_FIRE && petsInformation[playerid][pSInOperation])
-        RestorePSTextDrawings(playerid);
+        RestorePetsInformation(playerid);
     return 1;
 }
 
@@ -54,6 +52,8 @@ hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
             return -1;
         } else if (checkpoint == checkPointsInformation[i][interactionZoneCheckPoint] && checkPointsInformation[i][type] == 6) {
             CreatePSInOperation(playerid);
+            CreatePSTextDrawings(playerid);
+            CreatePSTExitFromTheCheckPoint(playerid);
             return -1;
         }
     }

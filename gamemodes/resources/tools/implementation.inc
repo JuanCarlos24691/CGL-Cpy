@@ -2,7 +2,6 @@
 #include "resources\tools\functions\clean_up_conversation.inc"
 #include "resources\tools\functions\expel_the_player.inc"
 #include "resources\tools\functions\is_alpha_numeric.inc"
-#include "resources\tools\functions\is_player_paused.inc"
 #include "resources\tools\functions\restore_global_text_drawings.inc"
 #include "resources\tools\functions\assign_player_color.inc"
 #include "resources\tools\functions\assign_player_name.inc"

@@ -28,7 +28,7 @@ public Steal(const playerid, const targetPlayerId) {
             return 1;
         }
 
-        va_SendClientMessageToAll(-1, "%s, El %s De %s (%d) Salio Huyendo Cuando Vio A %s %s De %s (%d)", accountInformation[targetPlayerId][petName], typeOfPetsNames[accountInformation[targetPlayerId][pet]], accountInformation[targetPlayerId][name], targetPlayerId, typeOfPetsNames[accountInformation[playerid][pet]], accountInformation[playerid][petName], accountInformation[playerid][name], playerid);
+        va_SendClientMessage(playerid, -1, "%s, El %s De %s (%d) Salio Huyendo Cuando Vio A %s %s De %s (%d)", accountInformation[targetPlayerId][petName], typeOfPetsNames[accountInformation[targetPlayerId][pet]], accountInformation[targetPlayerId][name], targetPlayerId, typeOfPetsNames[accountInformation[playerid][pet]], accountInformation[playerid][petName], accountInformation[playerid][name], playerid);
         va_SendClientMessage(targetPlayerId, -1, ""COLOR_RED"Tu Mascota Salio Huyendo.");
 
         if (accountInformation[targetPlayerId][pet] != 0)

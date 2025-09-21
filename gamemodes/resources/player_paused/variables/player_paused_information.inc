@@ -1,0 +1,1 @@
+new playerPausedInformation[MAX_PLAYERS][playerPausedInformationEnum];

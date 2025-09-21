@@ -8,7 +8,7 @@ public ChangePlayerCity(const playerid, const city) {
     if (GetPlayerVirtualWorld(playerid) != 0)
         SetPlayerVirtualWorld(playerid, 0);
 
-    if (IsPlayerPaused(playerid, 3000))
+    if (IsPlayerPaused(playerid, 1500))
         return SetPlayerSpawn(playerid, 0.0, 0.0, 0.0, 0.0, true);
 
     new string[124];

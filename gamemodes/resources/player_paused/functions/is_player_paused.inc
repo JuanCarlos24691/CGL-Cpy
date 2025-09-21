@@ -1,4 +1,4 @@
 forward IsPlayerPaused(const playerid, const time);
 public IsPlayerPaused(const playerid, const time) {
-    return (GetTickCount() - accountInformation[playerid][lastUpdate]) > time;
+    return (GetTickCount() - playerPausedInformation[playerid][pSLastUpdate]) > time;
 }

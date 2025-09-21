@@ -2,5 +2,5 @@ enum petsInformationEnum {
     bool:pSInOperation,
     pSTExitFromTheCheckPoint,
     pSTWaitingTime,
-    PlayerText:pSTextDrawings[30]
+    PlayerText:pSTextDrawings[42]
 };

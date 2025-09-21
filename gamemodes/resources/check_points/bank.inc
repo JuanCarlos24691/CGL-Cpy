@@ -41,7 +41,7 @@ hook OnPlayerEnterDynamicCP(playerid, checkpoint) {
 
 hook OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
     if (newkeys & KEY_FIRE && bankInformation[playerid][bAInOperation])
-        RestoreBATextDrawings(playerid);
+        RestoreBankInformation(playerid);
     return 1;
 }
 

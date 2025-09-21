@@ -20,9 +20,6 @@ hook OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
 }
 
 hook OnPlayerUpdate(playerid) {
-    if (accountInformation[playerid][lastUpdate] != GetTickCount())
-        accountInformation[playerid][lastUpdate] = GetTickCount();
-
     UpdateAccountInformation(playerid);
     UpdateWeaponsInformation(playerid);
     return 1;

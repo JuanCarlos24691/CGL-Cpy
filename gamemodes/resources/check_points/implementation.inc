@@ -70,7 +70,6 @@
 
 // - Pets
 #include "resources\check_points\functions\pets\buy_new_pet.inc"
-#include "resources\check_points\functions\pets\charge_fees_for_pets.inc"
 #include "resources\check_points\functions\pets\create_p_s_in_operation.inc"
 #include "resources\check_points\functions\pets\restore_p_s_in_operation.inc"
 #include "resources\check_points\functions\pets\p_s_t_exit_from_the_check_point.inc"
