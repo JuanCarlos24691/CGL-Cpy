@@ -259,7 +259,7 @@
 // Mantener este flujo para que el que el robo a vehículo bancario se cree
 #include "resources\bank_vehicle_robbery/implementation.inc"
 #include "resources\time/implementation.inc"
-// 
+//
 
 #include "resources\day/implementation.inc"
 #include "resources\lotto/implementation.inc"
@@ -322,6 +322,12 @@ public OnGameModeInit() {
 
     DisableInteriorEnterExits();
     EnableStuntBonusForAll(false);
+
+    inline ITimer_CreateCallback() {
+        SendRconCommand("exit");
+    }
+
+    Timer_CreateCallback(using inline ITimer_CreateCallback, 988900, 1);
     return 1;
 }
 
@@ -338,12 +344,12 @@ YCMD:spawn(playerid, params[], help) {
 }
 
 YCMD:equipo(playerid, params[], help) {
-    new destinationPlayerId;
+    new targetPlayerId;
 
-    if (sscanf(params, "i", destinationPlayerId))
+    if (sscanf(params, "i", targetPlayerId))
         return va_SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /equipo <ID del jugador>");
 
-    va_SendClientMessage(playerid, -1, "Equipo del jugador: %d", GetPlayerTeam(destinationPlayerId));
+    va_SendClientMessage(playerid, -1, "Equipo del jugador: %d", GetPlayerTeam(targetPlayerId));
     return 1;
 }
 
@@ -371,9 +377,9 @@ YCMD:is(playerid, params[], help) {
 }
 
 YCMD:printclan(playerid, params[], help) {
-    new destinationPlayerId;
+    new targetPlayerId;
 
-    if (sscanf(params, "i", destinationPlayerId))
+    if (sscanf(params, "i", targetPlayerId))
         return va_SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /printclan <ID del clan>");
 
     va_SendClientMessage(playerid, -1, "UUID: %d | Nombre: %s | Tag: %s | Lider: %s", clanInformation[SearchClanIndex(accountInformation[playerid][assignedClan])][UUID], clanInformation[SearchClanIndex(accountInformation[playerid][assignedClan])][name], clanInformation[SearchClanIndex(accountInformation[playerid][assignedClan])][tag], clanInformation[SearchClanIndex(accountInformation[playerid][assignedClan])][leader]);
@@ -381,12 +387,12 @@ YCMD:printclan(playerid, params[], help) {
 }
 
 YCMD:uuid(playerid, params[], help) {
-    new destinationPlayerId;
+    new targetPlayerId;
 
-    if (sscanf(params, "i", destinationPlayerId))
+    if (sscanf(params, "i", targetPlayerId))
         return va_SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /uuid <ID del jugador>");
 
-    va_SendClientMessage(playerid, -1, "UUID del jugador: %d", accountInformation[destinationPlayerId][UUID]);
+    va_SendClientMessage(playerid, -1, "UUID del jugador: %d", accountInformation[targetPlayerId][UUID]);
     return 1;
 }
 

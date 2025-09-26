@@ -1,9 +1,9 @@
 YCMD:darsublider(playerid, params[], help) {
-    new destinationPlayerId;
+    new targetPlayerId;
 
-    if (sscanf(params, "i", destinationPlayerId))
+    if (sscanf(params, "i", targetPlayerId))
         return va_SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /darsublider <ID del jugador>");
 
-    AssignClanSubLeader(playerid, destinationPlayerId);
+    AssignClanSubLeader(playerid, targetPlayerId);
     return 1;
 } 

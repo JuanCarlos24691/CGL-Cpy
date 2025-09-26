@@ -36,15 +36,15 @@ YCMD:banaccount(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 2)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 2 para poder usar este comando.");
 
-    new destinationPlayerId, tempBanDays, tempBanReason[33];
+    new targetPlayerId, tempBanDays, tempBanReason[33];
 
-    if (sscanf(params, "id s[33]", destinationPlayerId, tempBanDays, tempBanReason))
+    if (sscanf(params, "id s[33]", targetPlayerId, tempBanDays, tempBanReason))
         return va_SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /banaccount <ID del jugador> <Días (-1 permanente)> <Razón>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (!accountInformation[destinationPlayerId][loggedIn])
+    if (!accountInformation[targetPlayerId][loggedIn])
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un usuario que no esta registrado.");
 
     if (tempBanDays < -1 || tempBanDays == 0)
@@ -53,8 +53,8 @@ YCMD:banaccount(playerid, params[], help) {
     if (strlen(tempBanReason) < 10 || strlen(tempBanReason) > 32)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"La razón del baneo no es valída. Este deber tener un rango de caracteres de 10 a 32 caracteres.");
 
-    accountInformation[destinationPlayerId][banTime] = tempBanDays;
-    accountInformation[destinationPlayerId][banReason] = tempBanReason;
+    accountInformation[targetPlayerId][banTime] = tempBanDays;
+    accountInformation[targetPlayerId][banReason] = tempBanReason;
 
     new year, month, day, hour, minute, second;
     getdate(year, month, day);     // Obtener fecha
@@ -62,19 +62,19 @@ YCMD:banaccount(playerid, params[], help) {
 
     new tempBanDate[30];
     format(tempBanDate, sizeof(tempBanDate), "%04d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, minute, second);
-    accountInformation[destinationPlayerId][banDate] = tempBanDate;
+    accountInformation[targetPlayerId][banDate] = tempBanDate;
 
     if (tempBanDays == -1) {
         new string[248];
-        format(string, sizeof(string), ""COLOR_ROSA"**BANACCOUNT: %s (%i) (ADMIN BANACCOUNT) Un Admnistrador ha baneado de forma permanente al jugador %s (%i) por la razón: %s.", ReturnPlayerName(playerid), playerid, ReturnPlayerName(destinationPlayerId), destinationPlayerId, tempBanReason);
+        format(string, sizeof(string), ""COLOR_ROSA"**BANACCOUNT: %s (%i) (ADMIN BANACCOUNT) Un Admnistrador ha baneado de forma permanente al jugador %s (%i) por la razón: %s.", ReturnPlayerName(playerid), playerid, ReturnPlayerName(targetPlayerId), targetPlayerId, tempBanReason);
         va_SendClientMessageToAll(-1, string);
     } else if (tempBanDays > 0) {
         new string[248];
-        format(string, sizeof(string), ""COLOR_ROSA"**BANACCOUNT: %s (%i) (ADMIN BANACCOUNT) Un Admnistrador ha baneado por %i días al jugador %s (%i) por la razón: %s.", ReturnPlayerName(playerid), playerid, tempBanDays, ReturnPlayerName(destinationPlayerId), destinationPlayerId, tempBanReason);
+        format(string, sizeof(string), ""COLOR_ROSA"**BANACCOUNT: %s (%i) (ADMIN BANACCOUNT) Un Admnistrador ha baneado por %i días al jugador %s (%i) por la razón: %s.", ReturnPlayerName(playerid), playerid, tempBanDays, ReturnPlayerName(targetPlayerId), targetPlayerId, tempBanReason);
         va_SendClientMessageToAll(-1, string);
     }
 
-    Kick(destinationPlayerId);
+    Kick(targetPlayerId);
     return 1;
 }
 
@@ -155,26 +155,26 @@ YCMD:banip(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 2)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 2 para usar este comando.");
 
-    new destinationPlayerId, tempBanReason[128];
+    new targetPlayerId, tempBanReason[128];
 
-    if (sscanf(params, "is[128]", destinationPlayerId, tempBanReason))
+    if (sscanf(params, "is[128]", targetPlayerId, tempBanReason))
         return va_SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /banip <ID del jugador> <Razón>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
     if (strlen(tempBanReason) < 10 || strlen(tempBanReason) > 32)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"La razón debe tener entre 10 y 32 caracteres.");
 
     new query[256];
-    format(query, sizeof(query), "INSERT INTO ip_bans (player_name, ip, reason, date) VALUES ('%s', '%s', '%s', NOW())", accountInformation[destinationPlayerId][name], ReturnPlayerIp(destinationPlayerId), tempBanReason);
+    format(query, sizeof(query), "INSERT INTO ip_bans (player_name, ip, reason, date) VALUES ('%s', '%s', '%s', NOW())", accountInformation[targetPlayerId][name], ReturnPlayerIp(targetPlayerId), tempBanReason);
     mysql_query(databaseConnection, query);
 
     new string[192];
-    format(string, sizeof(string), ""COLOR_ROSA"**BAN-IP: %s (%i) (ADMIN BAN-IP) Un administrador ha baneado la IP del jugador %s (%i) por la razón: %s.", accountInformation[playerid][name], playerid, accountInformation[destinationPlayerId][name], destinationPlayerId, tempBanReason);
+    format(string, sizeof(string), ""COLOR_ROSA"**BAN-IP: %s (%i) (ADMIN BAN-IP) Un administrador ha baneado la IP del jugador %s (%i) por la razón: %s.", accountInformation[playerid][name], playerid, accountInformation[targetPlayerId][name], targetPlayerId, tempBanReason);
     va_SendClientMessageToAll(-1, string);
 
-    Kick(destinationPlayerId);
+    Kick(targetPlayerId);
     return 1;
 }
 

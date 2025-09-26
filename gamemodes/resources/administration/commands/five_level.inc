@@ -1,6 +1,6 @@
 YCMD:gmx(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 5)
-        return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 5  para poder usar este comando.");
+        return SendClientMessage(playerid, -1, ""COLOR_RED"Tu nievel administrativo no es suficiente para ejecutar este comando.");
 
     new time;
 
@@ -30,43 +30,43 @@ YCMD:setadminlevel(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 5)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 5 para poder usar este comando.");
 
-    new destinationPlayerId, tempAdministrativeLevel;
+    new targetPlayerId, tempAdministrativeLevel;
 
-    if (sscanf(params, "ui", destinationPlayerId, tempAdministrativeLevel))
+    if (sscanf(params, "ui", targetPlayerId, tempAdministrativeLevel))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /setadministrativelevel <ID Del Jugador> <Nivel>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (destinationPlayerId == playerid)
+    if (targetPlayerId == playerid)
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes hacer esto con tigo mismo.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un administrador con un nivel de administración mayor al tuyo.");
 
     if (tempAdministrativeLevel < 0 || tempAdministrativeLevel > 5)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Nivel inválido, debe estar entre 0 - 5.");
 
-    if (accountInformation[destinationPlayerId][administrativeLevel] == tempAdministrativeLevel)
+    if (accountInformation[targetPlayerId][administrativeLevel] == tempAdministrativeLevel)
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador ya tiene ese nivel administrativo.");
 
     new string[150];
 
-    if (tempAdministrativeLevel > accountInformation[destinationPlayerId][administrativeLevel]) {
+    if (tempAdministrativeLevel > accountInformation[targetPlayerId][administrativeLevel]) {
         format(string, sizeof(string), ""COLOR_ROSA"**SETADMINLEVEL: %s (%i) (ADMIN SETADMINLEVEL) Un administrador te ha subido el nivel administrativo al nivel %i.", ReturnPlayerName(playerid), playerid, tempAdministrativeLevel);
-        SendClientMessage(destinationPlayerId, -1, string);
+        SendClientMessage(targetPlayerId, -1, string);
 
-        format(string, sizeof(string), ""COLOR_ROSA"**SETADMINLEVEL: %s (%i) (ADMIN SETADMINLEVEL) Has subido el nivel administrativo del jugador al nivel %i.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, tempAdministrativeLevel);
+        format(string, sizeof(string), ""COLOR_ROSA"**SETADMINLEVEL: %s (%i) (ADMIN SETADMINLEVEL) Has subido el nivel administrativo del jugador al nivel %i.", ReturnPlayerName(targetPlayerId), targetPlayerId, tempAdministrativeLevel);
         SendClientMessage(playerid, -1, string);
     } else {
         format(string, sizeof(string), ""COLOR_ROSA"**SETADMINLEVEL: %s (%i) (ADMIN SETADMINLEVEL) Un administrador te ha degradado el nivel administrativo al nivel %i.", ReturnPlayerName(playerid), playerid, tempAdministrativeLevel);
-        SendClientMessage(destinationPlayerId, -1, string);
+        SendClientMessage(targetPlayerId, -1, string);
 
-        format(string, sizeof(string), ""COLOR_ROSA"**SETADMINLEVEL: %s (%i) (ADMIN SETADMINLEVEL) Has degradado el nivel administrativo del jugador al nivel %i.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, tempAdministrativeLevel);
+        format(string, sizeof(string), ""COLOR_ROSA"**SETADMINLEVEL: %s (%i) (ADMIN SETADMINLEVEL) Has degradado el nivel administrativo del jugador al nivel %i.", ReturnPlayerName(targetPlayerId), targetPlayerId, tempAdministrativeLevel);
         SendClientMessage(playerid, -1, string);
     }
 
-    accountInformation[destinationPlayerId][administrativeLevel] = tempAdministrativeLevel;
+    accountInformation[targetPlayerId][administrativeLevel] = tempAdministrativeLevel;
     return 1;
 }
 
@@ -142,16 +142,16 @@ YCMD:giveallweapon(playerid, params[], help) {
 
 YCMD:fakechat(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 5)
-        return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 5  para poder usar este comando.");
+        return SendClientMessage(playerid, -1, ""COLOR_RED"Tu nievel administrativo no es suficiente para ejecutar este comando.");
 
-    new destinationPlayerId, text[129];
-    if (sscanf(params, "us[129]", destinationPlayerId, text))
+    new targetPlayerId, text[129];
+    if (sscanf(params, "us[129]", targetPlayerId, text))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /fakechat <ID Del Jugador> <Texto>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un administrador con un nivel de administración mayor al tuyo.");
 
     PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
@@ -160,7 +160,7 @@ YCMD:fakechat(playerid, params[], help) {
     format(string, sizeof(string), ""COLOR_ROSA"**FAKECHAT: %s (%i) (ADMIN FAKECHAT) Un administrador te ha enviado un mensaje: %s", ReturnPlayerName(playerid), playerid, text);
     SendClientMessageToAll(-1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**FAKECHAT: %s (%i) (ADMIN FAKECHAT) Has enviado un mensaje al jugador: %s", ReturnPlayerName(destinationPlayerId), destinationPlayerId, text);
+    format(string, sizeof(string), ""COLOR_ROSA"**FAKECHAT: %s (%i) (ADMIN FAKECHAT) Has enviado un mensaje al jugador: %s", ReturnPlayerName(targetPlayerId), targetPlayerId, text);
     SendClientMessage(playerid, -1, string);
     return 1;
 }

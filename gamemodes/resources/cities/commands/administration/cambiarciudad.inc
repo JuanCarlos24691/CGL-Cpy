@@ -2,7 +2,7 @@
 
 YCMD:cambiarciudad(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 5)
-        return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 5  para poder usar este comando.");
+        return SendClientMessage(playerid, -1, ""COLOR_RED"Tu nievel administrativo no es suficiente para ejecutar este comando.");
 
     if (citiesInformation[changingCity])
         return SendClientMessage(playerid, -1, ""COLOR_RED"Ya hay un cambio de ciudad en proceso; por favor, espere.");

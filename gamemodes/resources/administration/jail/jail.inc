@@ -1,6 +1,6 @@
 #include <YSI_Coding\y_hooks>
 
-new playerJailDestinationPlayerId[MAX_PLAYERS] = { -1 };
+new playerJailtargetPlayerId[MAX_PLAYERS] = { -1 };
 
 #define DIALOG_JAILED_LIST (4)
 #define DIALOG_UNJAIL (5)
@@ -11,8 +11,8 @@ hook OnPlayerDisconnect(playerid, text[]) {
         playerJailTimer[playerid] = INVALID_TIMER;
     }
 
-    if (playerJailDestinationPlayerId[playerid] != -1)
-        playerJailDestinationPlayerId[playerid] = -1;
+    if (playerJailtargetPlayerId[playerid] != -1)
+        playerJailtargetPlayerId[playerid] = -1;
     return 1;
 }
 
@@ -36,7 +36,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                             format(dialogInformation, sizeof(dialogInformation), ""COLOR_WHITE"Preciona el boton 'Sacar' para sacar al jugador del jail\n\nJugador selecciónado: "COLOR_ROSA"%s"COLOR_WHITE" (%i) (El jugador saldra del jail en "COLOR_GREEN"%i"COLOR_WHITE" segundos)", ReturnPlayerName(i), i, accountInformation[i][jailTime]);
                             ShowPlayerDialog(playerid, DIALOG_UNJAIL, DIALOG_STYLE_MSGBOX, "Sacar al jugador del jail", dialogInformation, "Sacar", "Cancelar");
 
-                            playerJailDestinationPlayerId[playerid] = i;
+                            playerJailtargetPlayerId[playerid] = i;
                             break;
                         }
 
@@ -47,14 +47,14 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         }
         case DIALOG_UNJAIL: {
             if (response) {
-                UnJailThePlayer(playerJailDestinationPlayerId[playerid]);
+                UnJailThePlayer(playerJailtargetPlayerId[playerid]);
 
                 new string[124];
-                format(string, sizeof(string), ""COLOR_ROSA"**UNJAIL: %s (%i) (ADMIN UNJAIL) Un Admnistrador ha sacado del jail al jugador %s (%i).", ReturnPlayerName(playerid), playerid, ReturnPlayerName(playerJailDestinationPlayerId[playerid]), playerJailDestinationPlayerId[playerid]);
+                format(string, sizeof(string), ""COLOR_ROSA"**UNJAIL: %s (%i) (ADMIN UNJAIL) Un Admnistrador ha sacado del jail al jugador %s (%i).", ReturnPlayerName(playerid), playerid, ReturnPlayerName(playerJailtargetPlayerId[playerid]), playerJailtargetPlayerId[playerid]);
                 SendClientMessageToAll(-1, string);
 
-                if (accountInformation[playerid][loggedIn] && accountInformation[playerid][inGame] && accountInformation[playerid][loggedIn] && accountInformation[playerid][inGame] && playerJailDestinationPlayerId[playerid] != -1)
-                    playerJailDestinationPlayerId[playerid] = -1;
+                if (accountInformation[playerid][loggedIn] && accountInformation[playerid][inGame] && accountInformation[playerid][loggedIn] && accountInformation[playerid][inGame] && playerJailtargetPlayerId[playerid] != -1)
+                    playerJailtargetPlayerId[playerid] = -1;
             }
         }
     }

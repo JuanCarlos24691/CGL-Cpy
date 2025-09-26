@@ -10,7 +10,7 @@ YCMD:unjailall(playerid, params[], help) {
     format(string, sizeof(string), ""COLOR_ROSA"**UNJAILALL: %s (%i) (ADMIN UNJAILALL) Un administrador ha sacado a todos los jugadores del jail.", ReturnPlayerName(playerid), playerid);
     SendClientMessageToAll(-1, string);
 
-    if (accountInformation[playerid][loggedIn] && accountInformation[playerid][inGame] && accountInformation[playerid][loggedIn] && accountInformation[playerid][inGame] && playerJailDestinationPlayerId[playerid] != -1)
-        playerJailDestinationPlayerId[playerid] = -1;
+    if (accountInformation[playerid][loggedIn] && accountInformation[playerid][inGame] && accountInformation[playerid][loggedIn] && accountInformation[playerid][inGame] && playerJailtargetPlayerId[playerid] != -1)
+        playerJailtargetPlayerId[playerid] = -1;
     return 1;
 }

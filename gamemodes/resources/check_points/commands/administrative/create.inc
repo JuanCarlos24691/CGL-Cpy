@@ -1,6 +1,6 @@
 YCMD:crear(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 5)
-        return va_SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 5  para poder usar este comando.");
+        return va_SendClientMessage(playerid, -1, ""COLOR_RED"Tu nievel administrativo no es suficiente para ejecutar este comando.");
 
     if (numberOfCheckPointsCreated > MAX_CHECK_POINTS)
         return va_SendClientMessage(playerid, -1, ""COLOR_RED"Has llegado a los limites de entradas disponibles para crear.");

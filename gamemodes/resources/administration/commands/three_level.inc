@@ -5,42 +5,42 @@ YCMD:get(playerid, params[], help) {
     if (GetPlayerState(playerid) == PLAYER_STATE_SPECTATING)
         return 1;
 
-    new destinationPlayerId;
+    new targetPlayerId;
 
-    if (sscanf(params, "u", destinationPlayerId))
+    if (sscanf(params, "u", targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /get <ID Del Jugador>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (destinationPlayerId == playerid)
+    if (targetPlayerId == playerid)
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes traerte a ti mismo.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un administrador con un nivel de administración mayor al tuyo.");
 
     new Float:x, Float:y, Float:z;
     GetPlayerPos(playerid, x, y, z);
 
-    if (GetPlayerState(destinationPlayerId) == PLAYER_STATE_DRIVER) {
-        new vehicleid = GetPlayerVehicleID(destinationPlayerId);
+    if (GetPlayerState(targetPlayerId) == PLAYER_STATE_DRIVER) {
+        new vehicleid = GetPlayerVehicleID(targetPlayerId);
         SetVehiclePos(vehicleid, x, y + 2.5, z);
         LinkVehicleToInterior(vehicleid, GetPlayerInterior(playerid));
         SetVehicleVirtualWorld(vehicleid, GetPlayerVirtualWorld(playerid));
     } else {
-        SetPlayerPos(destinationPlayerId, x, y + 2.0, z);
+        SetPlayerPos(targetPlayerId, x, y + 2.0, z);
     }
 
-    SetPlayerInterior(destinationPlayerId, GetPlayerInterior(playerid));
-    SetPlayerVirtualWorld(destinationPlayerId, GetPlayerVirtualWorld(playerid));
-    PlayerPlaySound(destinationPlayerId, 1057, 0.0, 0.0, 0.0);
+    SetPlayerInterior(targetPlayerId, GetPlayerInterior(playerid));
+    SetPlayerVirtualWorld(targetPlayerId, GetPlayerVirtualWorld(playerid));
+    PlayerPlaySound(targetPlayerId, 1057, 0.0, 0.0, 0.0);
     PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
 
     new string[150];
     format(string, sizeof(string), ""COLOR_ROSA"**GET: %s (%i) (ADMIN GET) Un administrador te ha teletransportado a su pocisión.", ReturnPlayerName(playerid), playerid);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**GET: %s (%i) (ADMIN GET) Has teletransportado al jugador a tu pocisión.", ReturnPlayerName(destinationPlayerId), destinationPlayerId);
+    format(string, sizeof(string), ""COLOR_ROSA"**GET: %s (%i) (ADMIN GET) Has teletransportado al jugador a tu pocisión.", ReturnPlayerName(targetPlayerId), targetPlayerId);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
@@ -64,26 +64,26 @@ YCMD:sethealth(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 3 para poder usar este comando.");
 
-    new destinationPlayerId, Float:amount;
+    new targetPlayerId, Float:amount;
 
-    if (sscanf(params, "uf", destinationPlayerId, amount))
+    if (sscanf(params, "uf", targetPlayerId, amount))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /sethealth <ID Del Jugador> <Cantidad>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un administrador con un nivel de administración mayor al tuyo.");
 
-    SetPlayerHealth(destinationPlayerId, amount);
-    PlayerPlaySound(destinationPlayerId, 1057, 0.0, 0.0, 0.0);
+    SetPlayerHealth(targetPlayerId, amount);
+    PlayerPlaySound(targetPlayerId, 1057, 0.0, 0.0, 0.0);
     PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
 
     new string[150];
     format(string, sizeof(string), ""COLOR_ROSA"**SETHEALTH: %s (%i) (ADMIN SETHEALTH) Un administrador ha establecido tu vída al: %0.2f.", ReturnPlayerName(playerid), playerid, amount);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**SETHEALTH: %s (%i) (ADMIN SETHEALTH) Has establecido la vida del jugador al: %0.2f.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, amount);
+    format(string, sizeof(string), ""COLOR_ROSA"**SETHEALTH: %s (%i) (ADMIN SETHEALTH) Has establecido la vida del jugador al: %0.2f.", ReturnPlayerName(targetPlayerId), targetPlayerId, amount);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
@@ -92,26 +92,26 @@ YCMD:setarmour(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 3 para poder usar este comando.");
 
-    new destinationPlayerId, Float:amount;
-    if (sscanf(params, "uf", destinationPlayerId, amount))
+    new targetPlayerId, Float:amount;
+    if (sscanf(params, "uf", targetPlayerId, amount))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /setarmour <ID Del Jugador> <Cantidad>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un administrador con un nivel de administración mayor al tuyo.");
 
-    SetPlayerArmour(destinationPlayerId, amount);
+    SetPlayerArmour(targetPlayerId, amount);
 
-    PlayerPlaySound(destinationPlayerId, 1057, 0.0, 0.0, 0.0);
+    PlayerPlaySound(targetPlayerId, 1057, 0.0, 0.0, 0.0);
     PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
 
     new string[150];
     format(string, sizeof(string), ""COLOR_ROSA"**SETARMOUR: %s (%i) (ADMIN SETARMOUR) Un administrador ha establecido tu chaleco al: %0.2f.", ReturnPlayerName(playerid), playerid, amount);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**SETARMOUR: %s (%i) (ADMIN SETARMOUR) Has estanlecido el chaleco del jugador al: %0.2f.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, amount);
+    format(string, sizeof(string), ""COLOR_ROSA"**SETARMOUR: %s (%i) (ADMIN SETARMOUR) Has estanlecido el chaleco del jugador al: %0.2f.", ReturnPlayerName(targetPlayerId), targetPlayerId, amount);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
@@ -120,27 +120,27 @@ YCMD:freeze(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 3 para poder usar este comando.");
 
-    new destinationPlayerId, _reason[35];
+    new targetPlayerId, _reason[35];
 
-    if (sscanf(params, "uS(No reason specified)[35]", destinationPlayerId, _reason))
+    if (sscanf(params, "uS(No reason specified)[35]", targetPlayerId, _reason))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /freeze <ID Del Jugador> <Razón>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un administrador con un nivel de administración mayor al tuyo.");
 
-    TogglePlayerControllable(destinationPlayerId, false);
+    TogglePlayerControllable(targetPlayerId, false);
 
-    PlayerPlaySound(destinationPlayerId, 1057, 0.0, 0.0, 0.0);
+    PlayerPlaySound(targetPlayerId, 1057, 0.0, 0.0, 0.0);
     PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
 
     new string[150];
     format(string, sizeof(string), ""COLOR_ROSA"**FREEZE: %s (%i) (ADMIN FREEZE) Un administrador te ha congelado por la razón: %s.", ReturnPlayerName(playerid), playerid, _reason);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**FREEZE: %s (%i) (ADMIN FREEZE) Has congelado al jugador por la razón: %s.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, _reason);
+    format(string, sizeof(string), ""COLOR_ROSA"**FREEZE: %s (%i) (ADMIN FREEZE) Has congelado al jugador por la razón: %s.", ReturnPlayerName(targetPlayerId), targetPlayerId, _reason);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
@@ -149,25 +149,25 @@ YCMD:setkills(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos nivel administrativo 3 para usar este comando.");
 
-    new destinationPlayerId, amount;
+    new targetPlayerId, amount;
 
-    if (sscanf(params, "ui", destinationPlayerId, amount))
+    if (sscanf(params, "ui", targetPlayerId, amount))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /setkills <ID jugador> <Cantidad de kills>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando sobre un administrador de mayor nivel.");
 
-    accountInformation[destinationPlayerId][killings] = amount;
+    accountInformation[targetPlayerId][killings] = amount;
 
     new string[144];
     format(string, sizeof(string), ""COLOR_ROSA"**SETKILLS: %s (%i) (ADMIN SETKILLS) Un administrador ha establecido tus muertes en %i.", ReturnPlayerName(playerid), playerid, amount);
-    SendClientMessage(destinationPlayerId, -1, string);
-    PlayerPlaySound(destinationPlayerId, 1057, 0.0, 0.0, 0.0);
+    SendClientMessage(targetPlayerId, -1, string);
+    PlayerPlaySound(targetPlayerId, 1057, 0.0, 0.0, 0.0);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**SETKILLS: %s (%i) (ADMIN SETKILLS) Has establecido %i muertes al jugador.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, amount);
+    format(string, sizeof(string), ""COLOR_ROSA"**SETKILLS: %s (%i) (ADMIN SETKILLS) Has establecido %i muertes al jugador.", ReturnPlayerName(targetPlayerId), targetPlayerId, amount);
     SendClientMessage(playerid, -1, string);
     PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
     return 1;
@@ -177,25 +177,25 @@ YCMD:setdeaths(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos nivel administrativo 3 para usar este comando.");
 
-    new destinationPlayerId, amount;
+    new targetPlayerId, amount;
 
-    if (sscanf(params, "ui", destinationPlayerId, amount))
+    if (sscanf(params, "ui", targetPlayerId, amount))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /setdeaths <ID jugador> <cantidad>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando sobre un administrador de mayor nivel.");
 
-    accountInformation[destinationPlayerId][deaths] = amount;
+    accountInformation[targetPlayerId][deaths] = amount;
 
     new string[144];
     format(string, sizeof(string), ""COLOR_ROSA"**SETDEATHS: %s (%i) (ADMIN SETDEATHS) Un administrador ha establecido tus muertes en %i.", ReturnPlayerName(playerid), playerid, amount);
-    SendClientMessage(destinationPlayerId, -1, string);
-    PlayerPlaySound(destinationPlayerId, 1057, 0.0, 0.0, 0.0);
+    SendClientMessage(targetPlayerId, -1, string);
+    PlayerPlaySound(targetPlayerId, 1057, 0.0, 0.0, 0.0);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**SETDEATHS: %s (%i) (ADMIN SETDEATHS) Has establecido %i muertes al jugador.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, amount);
+    format(string, sizeof(string), ""COLOR_ROSA"**SETDEATHS: %s (%i) (ADMIN SETDEATHS) Has establecido %i muertes al jugador.", ReturnPlayerName(targetPlayerId), targetPlayerId, amount);
     SendClientMessage(playerid, -1, string);
     PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
     return 1;
@@ -205,27 +205,27 @@ YCMD:unfreeze(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 3 para poder usar este comando.");
 
-    new destinationPlayerId;
+    new targetPlayerId;
 
-    if (sscanf(params, "u", destinationPlayerId))
+    if (sscanf(params, "u", targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /unfreeze <ID Del Jugador>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un administrador con un nivel de administración mayor al tuyo.");
 
-    TogglePlayerControllable(destinationPlayerId, true);
+    TogglePlayerControllable(targetPlayerId, true);
 
-    PlayerPlaySound(destinationPlayerId, 1057, 0.0, 0.0, 0.0);
+    PlayerPlaySound(targetPlayerId, 1057, 0.0, 0.0, 0.0);
     PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
 
     new string[150];
     format(string, sizeof(string), ""COLOR_ROSA"**UNFREEZE: %s (%i) (ADMIN UNFREEZE) Un administrador te ha descongelado.", ReturnPlayerName(playerid), playerid);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**UNFREEZE: %s (%i) (ADMIN UNFREEZE) Has descongelado al jugador.", ReturnPlayerName(destinationPlayerId), destinationPlayerId);
+    format(string, sizeof(string), ""COLOR_ROSA"**UNFREEZE: %s (%i) (ADMIN UNFREEZE) Has descongelado al jugador.", ReturnPlayerName(targetPlayerId), targetPlayerId);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
@@ -234,15 +234,15 @@ YCMD:giveweapon(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos nivel administrativo 3 para usar este comando.");
 
-    new destinationPlayerId, weaponId, ammo;
+    new targetPlayerId, weaponId, ammo;
 
-    if (sscanf(params, "uiI(250)", destinationPlayerId, weaponId, ammo))
+    if (sscanf(params, "uiI(250)", targetPlayerId, weaponId, ammo))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /giveweapon <ID del jugador> <ID del arma> <Cabtidad de munición>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando sobre un administrador con nivel mayor al tuyo.");
 
     new WEAPON:weaponName;
@@ -296,13 +296,13 @@ YCMD:giveweapon(playerid, params[], help) {
             return SendClientMessage(playerid, -1, ""COLOR_RED"El ID del arma especificado no es válido.");
     }
 
-    GivePlayerWeapon(destinationPlayerId, weaponName, ammo);
+    GivePlayerWeapon(targetPlayerId, weaponName, ammo);
 
     new string[144];
     format(string, sizeof(string), ""COLOR_ROSA"**GIVEWEAPON: %s (%i) (ADMIN GIVEWEAPON) Un administrador te ha dado el arma (%i) con %i balas.", ReturnPlayerName(playerid), playerid, weaponId, ammo);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**GIVEWEAPON: %s (%i) (ADMIN GIVEWEAPON) Has dado el arma (%i) con %i balas al jugador.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, weaponId, ammo);
+    format(string, sizeof(string), ""COLOR_ROSA"**GIVEWEAPON: %s (%i) (ADMIN GIVEWEAPON) Has dado el arma (%i) con %i balas al jugador.", ReturnPlayerName(targetPlayerId), targetPlayerId, weaponId, ammo);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
@@ -311,27 +311,27 @@ YCMD:setcash(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 3 para poder usar este comando.");
 
-    new destinationPlayerId, amount;
+    new targetPlayerId, amount;
 
-    if (sscanf(params, "ui", destinationPlayerId, amount))
+    if (sscanf(params, "ui", targetPlayerId, amount))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /setcash <ID Del Jugador> <Cantidad>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un administrador con un nivel de administración mayor al tuyo.");
 
-    accountInformation[destinationPlayerId][cashInHand] = amount;
+    accountInformation[targetPlayerId][cashInHand] = amount;
 
-    ResetPlayerMoney(destinationPlayerId);
-    GivePlayerMoney(destinationPlayerId, amount);
+    ResetPlayerMoney(targetPlayerId);
+    GivePlayerMoney(targetPlayerId, amount);
 
     new string[150];
     format(string, sizeof(string), ""COLOR_ROSA"**SETCASH: %s (%i) (ADMIN SETCASH) Un administrador ha establecido tu dinero a $%i de dinero.", ReturnPlayerName(playerid), playerid, amount);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**SETCASH: %s (%i) (ADMIN SETCASH) Le has establecido el dinero del jugador a $%i de dinero.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, amount);
+    format(string, sizeof(string), ""COLOR_ROSA"**SETCASH: %s (%i) (ADMIN SETCASH) Le has establecido el dinero del jugador a $%i de dinero.", ReturnPlayerName(targetPlayerId), targetPlayerId, amount);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
@@ -340,25 +340,25 @@ YCMD:setscore(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 3 para poder usar este comando.");
 
-    new destinationPlayerId, amount;
+    new targetPlayerId, amount;
 
-    if (sscanf(params, "ui", destinationPlayerId, amount))
+    if (sscanf(params, "ui", targetPlayerId, amount))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /setscore <ID Del Jugador> [Cantidad]");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    if (accountInformation[playerid][administrativeLevel] < accountInformation[destinationPlayerId][administrativeLevel])
+    if (accountInformation[playerid][administrativeLevel] < accountInformation[targetPlayerId][administrativeLevel])
         return SendClientMessage(playerid, -1, ""COLOR_RED"No puedes usar este comando con un administrador con un nivel de administración mayor al tuyo.");
 
-    accountInformation[destinationPlayerId][level] = amount;
-    SetPlayerScore(destinationPlayerId, amount);
+    accountInformation[targetPlayerId][level] = amount;
+    SetPlayerScore(targetPlayerId, amount);
 
     new string[150];
     format(string, sizeof(string), ""COLOR_ROSA"**SETSCORE: %s (%i) (ADMIN SETSCORE) Un administrador ha establecido tu nivel al nivel %i.", ReturnPlayerName(playerid), playerid, amount);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**SETSCORE: %s (%i) (ADMIN SETSCORE) Has establecido el nivel del jugador al nivel %i.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, amount);
+    format(string, sizeof(string), ""COLOR_ROSA"**SETSCORE: %s (%i) (ADMIN SETSCORE) Has establecido el nivel del jugador al nivel %i.", ReturnPlayerName(targetPlayerId), targetPlayerId, amount);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
@@ -367,22 +367,22 @@ YCMD:givecash(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 3 para poder usar este comando.");
 
-    new destinationPlayerId, amount;
+    new targetPlayerId, amount;
 
-    if (sscanf(params, "ui", destinationPlayerId, amount))
+    if (sscanf(params, "ui", targetPlayerId, amount))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /givecash <ID Del Jugador> <Cantidad>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    accountInformation[destinationPlayerId][cashInHand] += amount;
-    GivePlayerMoney(destinationPlayerId, amount);
+    accountInformation[targetPlayerId][cashInHand] += amount;
+    GivePlayerMoney(targetPlayerId, amount);
 
     new string[150];
     format(string, sizeof(string), ""COLOR_ROSA"**GIVECASH: %s (%i) (ADMIN GIVECASH) Un administrador te dado $%i de dinero.", ReturnPlayerName(playerid), playerid, amount);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**GIVECASH: %s (%i) (ADMIN GIVECASH) Has dado $%i de dinero al jugador.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, amount);
+    format(string, sizeof(string), ""COLOR_ROSA"**GIVECASH: %s (%i) (ADMIN GIVECASH) Has dado $%i de dinero al jugador.", ReturnPlayerName(targetPlayerId), targetPlayerId, amount);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
@@ -391,24 +391,24 @@ YCMD:givescore(playerid, params[], help) {
     if (accountInformation[playerid][administrativeLevel] < 3)
         return SendClientMessage(playerid, -1, ""COLOR_RED"Debes tener al menos un nivel administrativo de nivel 3 para poder usar este comando.");
 
-    new destinationPlayerId, amount;
-    if (sscanf(params, "ui", destinationPlayerId, amount))
+    new targetPlayerId, amount;
+    if (sscanf(params, "ui", targetPlayerId, amount))
         return SendClientMessage(playerid, -1, ""COLOR_SINTAXYS"Sintaxis: /givescore <ID Del Jugador> <Cantidad>");
 
-    if (!IsPlayerConnected(destinationPlayerId))
+    if (!IsPlayerConnected(targetPlayerId))
         return SendClientMessage(playerid, -1, ""COLOR_RED"El jugador especificado no está conectado.");
 
-    SetPlayerScore(destinationPlayerId, amount);
-    accountInformation[destinationPlayerId][level] = amount;
+    SetPlayerScore(targetPlayerId, amount);
+    accountInformation[targetPlayerId][level] = amount;
 
-    PlayerPlaySound(destinationPlayerId, 1057, 0.0, 0.0, 0.0);
+    PlayerPlaySound(targetPlayerId, 1057, 0.0, 0.0, 0.0);
     PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
 
     new string[150];
     format(string, sizeof(string), ""COLOR_ROSA"**GIVESCORE: %s (%i) (ADMIN GIVESCORE) Un administrador te dado %i de nivel.", ReturnPlayerName(playerid), playerid, amount);
-    SendClientMessage(destinationPlayerId, -1, string);
+    SendClientMessage(targetPlayerId, -1, string);
 
-    format(string, sizeof(string), ""COLOR_ROSA"**GIVESCORE: %s (%i) (ADMIN GIVESCORE) Has dado %i de nivel al jugador.", ReturnPlayerName(destinationPlayerId), destinationPlayerId, amount);
+    format(string, sizeof(string), ""COLOR_ROSA"**GIVESCORE: %s (%i) (ADMIN GIVESCORE) Has dado %i de nivel al jugador.", ReturnPlayerName(targetPlayerId), targetPlayerId, amount);
     SendClientMessage(playerid, -1, string);
     return 1;
 }
