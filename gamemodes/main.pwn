@@ -16,7 +16,7 @@
 #include <YSI_Visual\y_commands>
 
 #undef MAX_PLAYERS
-#define MAX_PLAYERS (50)
+#define MAX_PLAYERS (30)
 
 // Definitions
 #include "resources\colors/colors.inc"
@@ -322,12 +322,6 @@ public OnGameModeInit() {
 
     DisableInteriorEnterExits();
     EnableStuntBonusForAll(false);
-
-    inline ITimer_CreateCallback() {
-        SendRconCommand("exit");
-    }
-
-    Timer_CreateCallback(using inline ITimer_CreateCallback, 988900, 1);
     return 1;
 }
 

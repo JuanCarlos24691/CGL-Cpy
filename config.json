@@ -97,9 +97,9 @@
     "pawn": {
         "legacy_plugins": [
             "crashdetect.so",
+            "sscanf.so",
             "bcrypt-samp.so",
             "mysql.so",
-            "sscanf.so",
             "streamer.so"
         ],
         "main_scripts": [

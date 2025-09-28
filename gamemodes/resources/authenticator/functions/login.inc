@@ -51,7 +51,7 @@ forward VerifyLoginPassword(const playerid, const loginPassword[]);
 public VerifyLoginPassword(const playerid, const loginPassword[]) {
     inline const IVerifyPassword() {
         if (bcrypt_is_equal()) {
-            if (!accountInformation[playerid][loggedIn])
+            if (accountInformation[playerid][loggedIn] != true)
                 accountInformation[playerid][loggedIn] = true;
 
             switch (accountInformation[playerid][administrativeLevel]) {
